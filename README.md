@@ -3,9 +3,11 @@ UCL Geography: Level 7 course, Scientific Computing
 
 ![](images/ucl_logo.png)
 
-[![Documentation Status](https://readthedocs.org/projects/uclgeog_msc_core/badge/?version=latest)](https://uclgeog_msc_core.readthedocs.io/en/latest/?badge=latest)
+[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) 
 
-[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
+[![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) 
+
+[![metadata](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
 
 
 This repository contains the core settings for software  several UCL MSc Geography courses.
