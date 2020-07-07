@@ -1,0 +1,41 @@
+#!/bin/bash
+purge=0
+
+for i in "$@"
+do
+case $i in
+  -p|--purge)
+    purge=1
+    shift # past argument=value
+    ;;
+  --help)
+    echo "${0}: [-p|--purge]"
+    echo "-p|--purge : purge any cache of the git file"
+    echo "             eg when the git has been updated"
+    echo "             and you want to force a re-read"
+    exit 0
+    shift # past argument=value
+    ;;
+    *)
+          # unknown option
+    ;;
+esac
+done
+
+docker login
+
+# get the id for the git clone command
+echo "first, try a build"
+
+if [ $purge -eq 1 ]; then
+  echo "purge: $purge"
+  docker system prune -fa
+fi
+
+docker build --rm -t jupyter/geog0111 docker 
+docker tag jupyter/geog0111 proflewis/geog0111
+
+#docker run -u 0 -w /home/joyvan/newform0111 -it proflewis/geog0111:latest bash -c "conda update conda conda-build --yes"
+
+docker push proflewis/geog0111
+#docker run -u 0 -it --rm -p 8888:8888 proflewis/geog0111:latest bash -c "cd newform0111 &&  python setup.py install && bash postBuild && conda activate newform0111"
