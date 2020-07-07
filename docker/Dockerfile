@@ -54,7 +54,7 @@ RUN curl -O https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-
 
 RUN mkdir -p test && \
     fix-permissions test && \
-    mv environment.yml postBuild Chapter1_help.ipynb test
+    mv environment.yml postBuild test.ipynb test
 
 # Create NB_USER wtih name jovyan user with UID=1000 and in the 'users' group
 # and make sure these dirs are writable by the `users` group.
