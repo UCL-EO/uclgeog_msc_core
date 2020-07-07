@@ -40,7 +40,7 @@ except:
 
 from osgeo import gdal, gdalconst,osr
 import numpy as np
-from geog0111.process_timeseries import mosaic_and_clip
+from uclgeog_msc_core.process_timeseries import mosaic_and_clip
 
 # set to True if you want to override
 # the MODIS projection (see above)
@@ -197,15 +197,15 @@ timer = [(datetime(1900,1,1) + timedelta(days=float(i)/24.)) \
 print (timer[:20])
 from osgeo import gdal, gdalconst,osr
 import numpy as np
-from geog0111.process_timeseries import mosaic_and_clip
+from uclgeog_msc_core.process_timeseries import mosaic_and_clip
 from datetime import datetime 
 
 from osgeo import gdal, gdalconst,osr
 import numpy as np
-from geog0111.process_timeseries import mosaic_and_clip
+from uclgeog_msc_core.process_timeseries import mosaic_and_clip
 from datetime import datetime,timedelta
-from geog0111.match_netcdf_to_data import match_netcdf_to_data
-from geog0111.geog_data import procure_dataset
+from uclgeog_msc_core.match_netcdf_to_data import match_netcdf_to_data
+from uclgeog_msc_core.geog_data import procure_dataset
 from pathlib import Path
 
 # set conditions
@@ -285,7 +285,7 @@ FIPS = country_code
 dates, lai_array, weights_array = lai['dates'],lai['lai'],lai['weights']
 print(lai_array.shape, weights_array.shape) #Check the output array shapes
 
-from geog0111.geog_data import procure_dataset
+from uclgeog_msc_core.geog_data import procure_dataset
 import numpy as np
 from pathlib import Path
 

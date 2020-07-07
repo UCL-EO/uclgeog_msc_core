@@ -3,7 +3,7 @@
 # doesnt change directory names at present
 
 # assume we run it from old name
-export old=uclgeog_msc_core
+export old=geog0111
 #`basename "$PWD"`
 export new=`basename "$PWD"`
 grep $old .???* * */* | grep -v Binary | grep -v build | grep -v egg-info > /tmp/x.$$

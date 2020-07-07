@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 
 # get the MODIS LAI dataset for 2016/2017 for W. Europe
-from geog0111.geog_data import procure_dataset
+from uclgeog_msc_core.geog_data import procure_dataset
 from pathlib import Path
 import sys
 year = 2017
@@ -56,7 +56,7 @@ if force or not Path(shape_file).exists():
 
 # Read the LAI dataset for a given country and year
 # read in the LAI data for given country code
-from geog0111.process_timeseries import process_timeseries
+from uclgeog_msc_core.process_timeseries import process_timeseries
 '''
 Note, the saved npz file can be quite large
 e.g. 8.1 G for France uncompressed, so we use compression.
@@ -132,7 +132,7 @@ if not done:
 
 from ecmwfapi import ECMWFDataServer
 from pathlib import Path
-from geog0111.geog_data import procure_dataset
+from uclgeog_msc_core.geog_data import procure_dataset
 
 ecmwf_file = 'europe_data_2016_2017.nc'
 
@@ -279,7 +279,7 @@ if ofile.exists():
 if download:
     done = procure_dataset(fname,verbose=True)
 
-from geog0111.get_modis_files import get_modis_files
+from uclgeog_msc_core.get_modis_files import get_modis_files
 '''
 Get the MODIS LC files from the server
 to store in data
@@ -295,7 +295,7 @@ except:
     print('server may be down')
 
 
-from geog0111.process_timeseries import mosaic_and_clip
+from uclgeog_msc_core.process_timeseries import mosaic_and_clip
 
 '''
 Extract and clip the dataset
