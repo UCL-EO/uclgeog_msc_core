@@ -15,6 +15,8 @@ Prerequisites: install Docker
 
 You need a computer with internet access, although once the software is downloaded you should be able to run things mainly stand-alone.
 
+You will need at least 10 GB of disk space, ideally around 100 GB or more. The docker image for this repository is around 1 GB in total.
+
 The simplest way to install this software that does not interfere with any other settings on your computer is to make use of [Docker](https://www.docker.com/products/docker-desktop).
 
 First then, install [Docker](https://www.docker.com/products/docker-desktop) on your computer.
