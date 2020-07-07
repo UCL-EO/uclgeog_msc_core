@@ -35,7 +35,7 @@ fi
 docker build --rm -t jupyter/geog0111 docker 
 docker tag jupyter/geog0111 proflewis/geog0111
 
-#docker run -u 0 -w /home/joyvan/newform0111 -it proflewis/geog0111:latest bash -c "conda update conda conda-build --yes"
+#docker run -u 0 -w /home/joyvan/uclgeog_msc_core -it proflewis/geog0111:latest bash -c "conda update conda conda-build --yes"
 
 docker push proflewis/geog0111
-#docker run -u 0 -it --rm -p 8888:8888 proflewis/geog0111:latest bash -c "cd newform0111 &&  python setup.py install && bash postBuild && conda activate newform0111"
+#docker run -u 0 -it --rm -p 8888:8888 proflewis/geog0111:latest bash -c "cd uclgeog_msc_core &&  python setup.py install && bash postBuild && conda activate uclgeog_msc_core"

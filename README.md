@@ -1,9 +1,9 @@
-# Welcome to newform0111: Scientific Computing 
+# Welcome to uclgeog_msc_core: Scientific Computing 
 UCL Geography: Level 7 course, Scientific Computing
 
 ![](images/ucl_logo.png)
 
-[![Documentation Status](https://readthedocs.org/projects/newform0111/badge/?version=latest)](https://newform0111.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/uclgeog_msc_core/badge/?version=latest)](https://uclgeog_msc_core.readthedocs.io/en/latest/?badge=latest)
 
 
 To install the software for this course, first make sure you have `pip` and `git` installed on your computer.
@@ -14,7 +14,7 @@ For example, if using `conda`, at the command line, type:
 	
 Then use `pip` to install from github:
 
-	pip install git+git://github.com/profLewis/newform0111@master
+	pip install git+git://github.com/profLewis/uclgeog_msc_core@master
 
 
 	conda config --add channels profLewis
@@ -29,63 +29,63 @@ Run the notebooks on Binder server directly by click on different
 chaper, it may take some time to start but just wait a bit....
  
 [Go to full list of
-notebooks](https://mybinder.org/v2/gh/profLewis/newform0111/master)
+notebooks](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master)
  
 Go to individual chapter:
  
-[Chapter0\_help](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter0_help.ipynb)
+[Chapter0\_help](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter0_help.ipynb)
  
-[Chapter1\_Python\_introduction](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter1_Python_introduction.ipynb)
+[Chapter1\_Python\_introduction](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter1_Python_introduction.ipynb)
  
-[Chapter1\_Python\_introduction\_answers](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter1_Python_introduction_answers.ipynb)
+[Chapter1\_Python\_introduction\_answers](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter1_Python_introduction_answers.ipynb)
  
-[Chapter2\_Numpy\_matplotlib](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter2_Numpy_matplotlib.ipynb)
+[Chapter2\_Numpy\_matplotlib](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter2_Numpy_matplotlib.ipynb)
  
-[Chapter2\_Numpy\_matplotlib\_answers](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter2_Numpy_matplotlib_answers.ipynb)
+[Chapter2\_Numpy\_matplotlib\_answers](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter2_Numpy_matplotlib_answers.ipynb)
  
-[Chapter3\_0\_GDAL](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_0_GDAL.ipynb)
+[Chapter3\_0\_GDAL](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_0_GDAL.ipynb)
  
-[Chapter3\_1\_GDAL](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_1_GDAL.ipynb)
+[Chapter3\_1\_GDAL](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_1_GDAL.ipynb)
  
-[Chapter3\_1\_GDAL\_answers](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_1_GDAL_answers.ipynb)
+[Chapter3\_1\_GDAL\_answers](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_1_GDAL_answers.ipynb)
  
-[Chapter3\_2\_MODIS\_download](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_2_MODIS_download.ipynb)
+[Chapter3\_2\_MODIS\_download](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_2_MODIS_download.ipynb)
  
-[Chapter3\_2\_MODIS\_download\_answers](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_2_MODIS_download_answers.ipynb)
+[Chapter3\_2\_MODIS\_download\_answers](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_2_MODIS_download_answers.ipynb)
  
-[Chapter3\_3\_GDAL\_masking](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_3_GDAL_masking.ipynb)
+[Chapter3\_3\_GDAL\_masking](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_3_GDAL_masking.ipynb)
  
-[Chapter3\_4\_GDAL\_stacking\_and\_interpolating](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_4_GDAL_stacking_and_interpolating.ipynb)
+[Chapter3\_4\_GDAL\_stacking\_and\_interpolating](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_4_GDAL_stacking_and_interpolating.ipynb)
  
-[Chapter3\_4a\_GDAL\_stacking\_and\_interpolating-convolution](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_4a_GDAL_stacking_and_interpolating-convolution.ipynb)
+[Chapter3\_4a\_GDAL\_stacking\_and\_interpolating-convolution](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_4a_GDAL_stacking_and_interpolating-convolution.ipynb)
  
-[Chapter3\_5\_Movies](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_5_Movies.ipynb)
+[Chapter3\_5\_Movies](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_5_Movies.ipynb)
  
-[Chapter3\_6A\_GDAL\_Reconciling\_projections\_prerequisites](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_6A_GDAL_Reconciling_projections_prerequisites.ipynb)
+[Chapter3\_6A\_GDAL\_Reconciling\_projections\_prerequisites](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_6A_GDAL_Reconciling_projections_prerequisites.ipynb)
  
-[Chapter3\_6\_GDAL\_Reconciling\_projections](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter3_6_GDAL_Reconciling_projections.ipynb)
+[Chapter3\_6\_GDAL\_Reconciling\_projections](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter3_6_GDAL_Reconciling_projections.ipynb)
  
-[Chapter4\_Practical\_Part1](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter4_Practical_Part1.ipynb)
+[Chapter4\_Practical\_Part1](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter4_Practical_Part1.ipynb)
  
-[Chapter5\_Linear\_models](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter5_Linear_models.ipynb)
+[Chapter5\_Linear\_models](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter5_Linear_models.ipynb)
  
-[Chapter5\_Modelling\_and\_optimisation](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter5_Modelling_and_optimisation.ipynb)
+[Chapter5\_Modelling\_and\_optimisation](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter5_Modelling_and_optimisation.ipynb)
  
-[Chapter6\_NonLinear\_Model\_Fitting](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter6_NonLinear_Model_Fitting.ipynb)
+[Chapter6\_NonLinear\_Model\_Fitting](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter6_NonLinear_Model_Fitting.ipynb)
  
-[Chapter6\_NonLinear\_Model\_Fitting\_Solutions](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter6_NonLinear_Model_Fitting_Solutions.ipynb)
+[Chapter6\_NonLinear\_Model\_Fitting\_Solutions](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter6_NonLinear_Model_Fitting_Solutions.ipynb)
  
-[Chapter7\_FittingPhenologyModels](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter7_FittingPhenologyModels.ipynb)
+[Chapter7\_FittingPhenologyModels](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter7_FittingPhenologyModels.ipynb)
  
-[Chapter7\_FittingPhenologyModels\_Solutions](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter7_FittingPhenologyModels_Solutions.ipynb)
+[Chapter7\_FittingPhenologyModels\_Solutions](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter7_FittingPhenologyModels_Solutions.ipynb)
  
-[Chapter8\_Practical\_Part2](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter8_Practical_Part2.ipynb)
+[Chapter8\_Practical\_Part2](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter8_Practical_Part2.ipynb)
  
-[Chapter9\_Fire\_and\_Teleconnections](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter9_Fire_and_Teleconnections.ipynb)
+[Chapter9\_Fire\_and\_Teleconnections](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter9_Fire_and_Teleconnections.ipynb)
  
-[Chapter9\_Fire\_and\_Teleconnections\_Solution](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Chapter9_Fire_and_Teleconnections_Solution.ipynb)
+[Chapter9\_Fire\_and\_Teleconnections\_Solution](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Chapter9_Fire_and_Teleconnections_Solution.ipynb)
  
-[Connection](https://mybinder.org/v2/gh/profLewis/newform0111/master?filepath=Connection.ipynb)
+[Connection](https://mybinder.org/v2/gh/profLewis/uclgeog_msc_core/master?filepath=Connection.ipynb)
 
 
 
@@ -108,7 +108,7 @@ N.B. 2019-20 Course Convenors: [Dr Qingling Wu](http://www.geog.ucl.ac.uk/about-
 
 ### Purpose of this course
 
-This course, newform0111 Scientific Computing, is a term 1 MSc module worth 15 credits (25% of the term 1 credits) that aims to:
+This course, uclgeog_msc_core Scientific Computing, is a term 1 MSc module worth 15 credits (25% of the term 1 credits) that aims to:
 
 * impart an understanding of scientific computing
 * give students a grounding in the basic principles of algorithm development and program construction
@@ -184,7 +184,7 @@ For users
 Preliminaries
 -------------
 
-The repository of these notes is [https://github.com/profLewis/newform0111](https://github.com/profLewis/newform0111).
+The repository of these notes is [https://github.com/profLewis/uclgeog_msc_core](https://github.com/profLewis/uclgeog_msc_core).
 
 If you navigate to that link, and look under the `Code` tab, you will see various ways you can download the notes.
 
@@ -203,7 +203,7 @@ Change directory to where you want to work, e.g. (BUT put in your own directory 
 
 Make a local clone of the notes:
 
-	git clone https://github.com/profLewis/newform0111.git
+	git clone https://github.com/profLewis/uclgeog_msc_core.git
 
 Install this with:
 
@@ -214,11 +214,11 @@ Install utility codes
 
 Users can install the course utility codes with:
 
-	conda install newform0111
+	conda install uclgeog_msc_core
 	
 They can then access utility codes from this:
 
-	python -c "import newform0111;help(newform0111)"
+	python -c "import uclgeog_msc_core;help(uclgeog_msc_core)"
 
 
 For developers
@@ -231,9 +231,9 @@ Assuming we are using conda, and that you have an anaconda cloud account (https:
 
 Package configuration is done in the file [meta.yaml](meta.yaml).
 
-Assume we have the distribution locally in `/Users/Documents/GitHub/newform0111`:
+Assume we have the distribution locally in `/Users/Documents/GitHub/uclgeog_msc_core`:
 
-	cd /Users/Documents/GitHub/newform0111
+	cd /Users/Documents/GitHub/uclgeog_msc_core
 	
 	# installs
 	conda install anaconda-client conda-build conda-verify
@@ -256,16 +256,16 @@ The user can now access the package from this channel. They can set this up with
 	
 Then install with:
 
-	conda install newform0111
+	conda install uclgeog_msc_core
 	
 They can then access utility codes from this:
 
-	python -c "import newform0111;help(newform0111)"
+	python -c "import uclgeog_msc_core;help(uclgeog_msc_core)"
 	
 Setting up Docker 
 -----------------
 
-You can set up a docker machine by simply downloading the [Dockerfile](https://raw.githubusercontent.com/profLewis/newform0111/master/Dockerfile) file. 
+You can set up a docker machine by simply downloading the [Dockerfile](https://raw.githubusercontent.com/profLewis/uclgeog_msc_core/master/Dockerfile) file. 
 
 Make sure you have docker installed on your local machine.
 
@@ -291,7 +291,7 @@ This now exists as [https://hub.docker.com/repository/docker/proflewis/geog0111]
 
 To run commands on the docker image as root, for example install:
 
-	docker run -u 0 -it -p 8888:8888 proflewis/geog0111:latest bash -c "cd newform0111 &&  python setup.py install && bash postBuild && conda activate newform0111"
+	docker run -u 0 -it -p 8888:8888 proflewis/geog0111:latest bash -c "cd uclgeog_msc_core &&  python setup.py install && bash postBuild && conda activate uclgeog_msc_core"
 	
 Additional info:
 
@@ -307,8 +307,8 @@ etc. as above
 
 To update notes on docker image:
 
-	docker run -u 0 -w /home/jovyan/newform0111 -it proflewis/geog0111:latest bash -c "git reset --hard HEAD && git pull"
-	docker run -u 0 -w /home/jovyan/newform0111 -it proflewis/geog0111:latest bash -c "python setup.py install && bash postBuild && conda activate newform0111"
+	docker run -u 0 -w /home/jovyan/uclgeog_msc_core -it proflewis/geog0111:latest bash -c "git reset --hard HEAD && git pull"
+	docker run -u 0 -w /home/jovyan/uclgeog_msc_core -it proflewis/geog0111:latest bash -c "python setup.py install && bash postBuild && conda activate uclgeog_msc_core"
 
 	
 Using Docker 
@@ -320,5 +320,5 @@ Make sure you install docker on you local computer, then type:
 	
 Then, run it with:
 
-	docker run -it -w /home/jovyan/newform0111 -p 8888:8888 proflewis/geog0111:latest start.sh jupyter notebook
+	docker run -it -w /home/jovyan/uclgeog_msc_core -p 8888:8888 proflewis/geog0111:latest start.sh jupyter notebook
 

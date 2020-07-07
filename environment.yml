@@ -1,4 +1,4 @@
-name: newform0111
+name: uclgeog_msc_core
 channels:
   - conda-forge
   - defaults

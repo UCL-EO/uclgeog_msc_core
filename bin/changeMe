@@ -1,0 +1,27 @@
+#!/bin/bash
+# change all references from in to out
+# doesnt change directory names at present
+
+# assume we run it from old name
+export old=uclgeog_msc_core
+#`basename "$PWD"`
+export new=`basename "$PWD"`
+grep $old .???* * */* | grep -v Binary | grep -v build | grep -v egg-info > /tmp/x.$$
+export xdir=/tmp/xdir.$$
+mkdir -p $xdir
+echo $old
+
+x=`cat /tmp/x.$$| awk -F: '{x[$1]=$1} END{for(i in x)print i}'`
+
+mv $old $new
+
+for f in $x; do
+  in=`basename $f`
+  out=$f
+  echo '**' $in ':->' $out
+  cp $f $xdir
+  sed < $xdir/$in 's/'${old}'/'${new}'/g' > $out
+done
+rm -rf /tmp/x.$$ $xdir
+
+
