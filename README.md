@@ -34,7 +34,14 @@ This should download the docker image (if it isnt already downloaded) and print 
 
 Open a browser with that address.
 
-[![docker pulls](https://img.shields.io/docker/pulls/jproflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
+Downloads
+-----------------
+
+[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) 
+
+
+
+[![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
 
 ### Course Convenor
 
