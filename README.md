@@ -45,3 +45,10 @@ Open a browser with that address.
 [Dr. Jose Gomez-Dans](http://www.geog.ucl.ac.uk/about-the-department/people/research-staff/research-staff/jose-gomez-dans/)
 
 [Dr Qingling Wu](http://www.geog.ucl.ac.uk/about-the-department/people/research-staff/research-staff/qingling-wu/)
+
+Other information
+-----------------
+
+For reference, the docker file is stored on [docker hub](https://hub.docker.com/r/proflewis/uclgeog_msc).
+
+The script [bin/dockerMe](bin/dockerMe) contains all of the docker commands you might need to create such a docker image yourself.
