@@ -45,9 +45,9 @@ ENV PATH=$CONDA_DIR/bin:$PATH \
 # postBuild
 
 RUN curl -O https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions && \
-    curl -O https://raw.githubusercontent.com/profLewis/uclgeog_msc_core/master/environment.yml && \
-    curl -O https://raw.githubusercontent.com/profLewis/uclgeog_msc_core/master/test.ipynb && \
-    curl -O https://raw.githubusercontent.com/profLewis/uclgeog_msc_core/master/postBuild && \
+    curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/environment.yml && \
+    curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/test.ipynb && \
+    curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/postBuild && \
     chmod a+rx fix-permissions && \
     cp fix-permissions /usr/local/bin/fix-permissions
 
@@ -78,7 +78,7 @@ RUN conda update -n base conda --yes && \
 
 # clone the repo
 #RUN cd /home/$NB_USER && \
-#    git clone https://github.com/profLewis/uclgeog_msc_core.git && \
+#    git clone https://github.com/UCL-EO/uclgeog_msc_core.git && \
 #    fix-permissions /home/$NB_USER 
 
 # update packages
