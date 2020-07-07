@@ -52,3 +52,5 @@ Other information
 For reference, the docker file is stored on [docker hub](https://hub.docker.com/r/proflewis/uclgeog_msc).
 
 The script [bin/dockerMe](bin/dockerMe) contains all of the docker commands you might need to create such a docker image yourself.
+
+This docker file is derived from [jupyter/base-notebook](https://hub.docker.com/r/jupyter/base-notebook/).
