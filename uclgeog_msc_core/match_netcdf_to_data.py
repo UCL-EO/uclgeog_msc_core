@@ -1,6 +1,6 @@
 from osgeo import gdal, gdalconst,osr
 import numpy as np
-from uclgeog_msc_core.process_timeseries import mosaic_and_clip
+from uclgeog_msc.process_timeseries import mosaic_and_clip
 from datetime import datetime , timedelta
 from pathlib import Path
 

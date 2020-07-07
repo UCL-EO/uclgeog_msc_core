@@ -6,6 +6,9 @@
 export old=geog0111
 #`basename "$PWD"`
 export new=`basename "$PWD"`
+export old=uclgeog_msc_core
+export new=uclgeog_msc
+
 grep $old .???* * */* | grep -v Binary | grep -v build | grep -v egg-info > /tmp/x.$$
 export xdir=/tmp/xdir.$$
 mkdir -p $xdir
