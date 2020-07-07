@@ -15,7 +15,7 @@ Prerequisites: install Docker
 
 You need a computer with internet access, although once the software is downloaded you should be able to run things mainly stand-alone.
 
-You will need at least 10 GB of disk space, ideally more. The docker image for this repository is around 1 GB in total.
+You will need at least 10 GB of disk space, ideally more. The docker image for this repository is around 1 GB in total (300 MB compressed).
 
 The simplest way to install this software that does not interfere with any other settings on your computer is to make use of [Docker](https://www.docker.com/products/docker-desktop).
 
@@ -37,11 +37,7 @@ Open a browser with that address.
 Downloads
 -----------------
 
-[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) 
-
-
-
-[![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
+[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
 
 ### Course Convenor
 
