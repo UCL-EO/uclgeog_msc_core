@@ -5,6 +5,9 @@ UCL Geography: Level 7 course, Scientific Computing
 
 [![Documentation Status](https://readthedocs.org/projects/uclgeog_msc_core/badge/?version=latest)](https://uclgeog_msc_core.readthedocs.io/en/latest/?badge=latest)
 
+[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
+
+
 This repository contains the core settings for software  several UCL MSc Geography courses.
 
 It is designed to allow users to install the software necessary to partipate in these courses.
@@ -33,11 +36,6 @@ This should download the docker image (if it isnt already downloaded) and print 
 	http://127.0.0.1:8888/?token=780c0c7038061608a8e9c92a293c8ecc3b04f173ef281734
 
 Open a browser with that address.
-
-Downloads
------------------
-
-[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
 
 ### Course Convenor
 
