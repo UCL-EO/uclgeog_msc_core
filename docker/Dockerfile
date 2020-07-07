@@ -91,7 +91,8 @@ RUN cd /home/$NB_USER/test && \
 #    bash postBuild
 
 # permissions check
-RUN fix-permissions $CONDA_DIR && \
+RUN pip install -i https://test.pypi.org/simple/ uclgeog-msc-core &&
+    fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
 
