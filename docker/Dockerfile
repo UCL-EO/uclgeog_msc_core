@@ -41,12 +41,13 @@ ENV PATH=$CONDA_DIR/bin:$PATH \
 #
 # fix-permissions
 # environment.yml
-# Chapter1_help.ipynb as a test notebook
+# test.ipynb and NASA.ipynb as eg notebook
 # postBuild
 
 RUN curl -O https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/environment.yml && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/test.ipynb && \
+    curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/NASA.ipynb && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/postBuild && \
     chmod a+rx fix-permissions && \
     cp fix-permissions /usr/local/bin/fix-permissions
