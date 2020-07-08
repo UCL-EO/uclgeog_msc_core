@@ -41,13 +41,13 @@ ENV PATH=$CONDA_DIR/bin:$PATH \
 #
 # fix-permissions
 # environment.yml
-# notebook.ipynb and NASA.ipynb as eg notebook
+# notebook.ipynb and 'NASA MODIS Earthdata.ipynb' as eg notebook
 # postBuild
 
 RUN curl -O https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/environment.yml && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/notebook.ipynb && \
-    curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/NASA.ipynb && \
+    curl -O 'https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/NASA MODIS Earthdata.ipynb' && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/postBuild && \
     chmod a+rx fix-permissions && \
     cp fix-permissions /usr/local/bin/fix-permissions
@@ -55,7 +55,7 @@ RUN curl -O https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-
 
 RUN mkdir -p test && \
     fix-permissions test && \
-    mv environment.yml postBuild notebook.ipynb NASA.ipynb test
+    mv environment.yml postBuild notebook.ipynb 'NASA MODIS Earthdata.ipynb' test
 
 # Create NB_USER wtih name jovyan user with UID=1000 and in the 'users' group
 # and make sure these dirs are writable by the `users` group.
