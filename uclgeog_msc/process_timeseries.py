@@ -13,7 +13,7 @@ import os
 import requests
 import shutil 
 
-def get_world( borders_url = "http://thematicmapping.org/downloads",\
+def get_world( borders_url = "https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/data",\
                file="TM_WORLD_BORDERS-0.3.zip",\
                data='data',force=False):
   '''

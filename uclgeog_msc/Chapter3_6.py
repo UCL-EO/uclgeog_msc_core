@@ -1,4 +1,4 @@
-
+from uclgeog_msc.process_timeseries import mosaic_and_clip
 import sys
 year = 2017
 if len(sys.argv) == 3:

@@ -7,3 +7,6 @@ rm -rf dist/uclgeog_msc*
 python setup.py install
 python setup.py sdist
 python3 -m twine upload --repository testpypi dist/uclgeog_msc*
+
+# update local
+python setup.py install && bash postBuild
