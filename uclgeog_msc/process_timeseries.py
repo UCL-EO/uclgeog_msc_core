@@ -12,6 +12,9 @@ from pathlib import Path
 import os
 import requests
 import shutil 
+from get_modis_files import get_modis_files
+
+
 
 def get_world( borders_url = "https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/data",\
                file="TM_WORLD_BORDERS-0.3.zip",\
@@ -88,41 +91,166 @@ def mosaic_and_clip(tiles,
                     ofolder=None,
                     folder="data/",
                     layer="Lai_500m",
-                    shpfile="data/TM_WORLD_BORDERS-0.3.shp",
-                    country_code="LU",
+                    shpfile=None,
+                    country_code=None,
                     product='MCD15A3H',
+                    verbose=True,
+                    nodata=255,
+                    base_url='https://e4ftl01.cr.usgs.gov/MOTA',
                     frmat="MEM"):
     """
-    #TODO docstring missing!!!!
+    Simple high-level function for downloading MODIS dataset
+    from Earthdata.
+
+    tiles:  list of MODIS tiles to access
+    doy:          day of year for dataset. Not that some products are only produced
+                  every 4 or 8 days, so requesting a dataset for a day that doesnt
+                  exist will fail.
+    year:         year of dataset. 1999 to now.
+    
+
+    folder:       folder for storing datasets
+                  default: data
+    layer:        data layer. See product specification page for more details.
+                  https://lpdaac.usgs.gov/products/mcd15a3hv006/
+                  default: Lai_500m 
+    product:      product id. See product specification page for more details. e.g.
+                  https://lpdaac.usgs.gov/products/mcd15a3hv006/
+                  default: MCD15A3H
+    verbose:      verbose flag
+                  defaultL False
+    country_code: FIPS country code for any masking:
+                  https://en.wikipedia.org/wiki/List_of_FIPS_country_codes
+                  default: None
+    shpfile:      Shapefile to use for data masking
+                  default: TM_WORLD_BORDERS-0.3.zip
+    nodata:       no data value
+                  default: 255
+    base_url:     base URL of datasets
+                  default: https://e4ftl01.cr.usgs.gov/MOTA
+    frmat:        output file format: MEM, VRT or GTiff
+                  default MEM (data array)
+
     """
+
+    tiles = list(files)
 
     if ofolder == None:
         ofolder = folder
     folder_path = Path(folder)
     ofolder_path = Path(ofolder)
-    if not ofolder_path.exists():
-        ofolder_path.mkdir()
+    # mkdir
+    folder_path.mkdir(parents=True, exist_ok=True)
+    ofolder_path.mkdir(parents=True, exist_ok=True)
+
+    if verbose:
+        print(f'Testing for MODIS files on this computer ...')
+
+    # download files if we need to
+    mfiles = get_modis_files(doy,year,tiles,product=product,version=6,\
+                      destination_folder=folder,verbose=verbose,\
+                      base_url=base_url)
 
     # Find all files to mosaic together
     hdf_files = find_mcdfiles(year, doy, tiles, folder,product=product)
+    if verbose:
+      print(f'files: {hdf_files}')
 
     # Create GDAL friendly-names...
     gdal_filenames = create_gdal_friendly_names(hdf_files, layer, product=product)
-    if frmat == "MEM":
+    if verbose:
+      print(f'dataset: {gdal_filenames}')
+
+    '''
+    If borders specified:
+    '''
+    # get borders if needed
+    if country_code != None: 
+      if shpfile == None:
+            shpfile = get_world(data=folder).replace('.zip','.shp')
+
+      if verbose:
+        print(f'{shpfile:s} shapefile used to mask FIPS code {country_code:s}');
+        print(f'output format {frmat}')
+        print(f'No data value: {nodata}')
+ 
+      if frmat == "MEM":
         g = gdal.Warp(
             "",
             gdal_filenames,
             format="MEM",
-            dstNodata=255,
+            dstNodata=nodata),
+        if g:
+            data = g.ReadAsArray()
+            if verbose:
+                print(f'returning data array')
+            return data
+        else:
+            print(f'failed to warp {str(gdal_filenames)} {year}, {doy}, {tiles}, {folder}')
+      elif frmat == "VRT":
+
+        try:
+          geotiff_fnamex = f"{layer:s}_{year:d}_{doy:03d}.vrt"
+          geotiff_fname  = ofolder_path/geotiff_fnamex
+          g = gdal.Warp(
+            geotiff_fname.as_posix(),
+            gdal_filenames,
+            format=frmat,
+            dstNodata=nodata)
+        except:
+          pass
+        if g:
+            del g
+            ofile = geotiff_fname.as_posix()
+            if verbose:
+                print(f'returning data in {ofile}')
+            return ofile
+
+      elif frmat == "GTiff":
+        try:
+          geotiff_fnamex = f"{layer:s}_{year:d}_{doy:03d}.tif"
+          geotiff_fname  = ofolder_path/geotiff_fnamex
+          g = gdal.Warp(
+            geotiff_fname.as_posix(),
+            gdal_filenames,
+            format=frmat,
+            dstNodata=nodata)
+        except:
+          pass
+        if g:
+            del g
+            ofile = geotiff_fname.as_posix()
+            if verbose:
+                print(f'returning data in {ofile}')
+            return ofile
+        else:
+            print(f'failed to warp {str(gdal_filenames)}  {year}, {doy}, {tiles}, {folder}')
+      else:
+        print("Only MEM, VRT or GTiff formats supported!")
+
+    else:
+
+      if verbose:
+        print(f'output format {frmat}')
+        print(f'No data value: {nodata}')
+
+      if frmat == "MEM":
+        g = gdal.Warp(
+            "",
+            gdal_filenames,
+            format="MEM",
+            dstNodata=nodata,
             cutlineDSName=shpfile,
             cutlineWhere=f"FIPS='{country_code:s}'",
             cropToCutline=True)
         if g:
             data = g.ReadAsArray()
+            if verbose:
+                print(f'returning data in array')
             return data
         else:
             print(f'failed to warp {str(gdal_filenames)} {year}, {doy}, {tiles}, {folder}')
-    elif frmat == "VRT":
+      elif frmat == "VRT":
 
         try:
           geotiff_fnamex = f"{layer:s}_{year:d}_{doy:03d}_{country_code:s}.vrt"
@@ -131,7 +259,7 @@ def mosaic_and_clip(tiles,
             geotiff_fname.as_posix(),
             gdal_filenames,
             format=frmat,
-            dstNodata=255,
+            dstNodata=nodata,
             cutlineDSName=shpfile,
             cutlineWhere=f"FIPS='{country_code:s}'",
             cropToCutline=True)
@@ -139,9 +267,12 @@ def mosaic_and_clip(tiles,
           pass
         if g:
             del g
-            return geotiff_fname.as_posix()
+            ofile = geotiff_fname.as_posix()
+            if verbose:
+                print(f'returning data in {ofile}')
+            return ofile
 
-    elif frmat == "GTiff":
+      elif frmat == "GTiff":
         try:
           geotiff_fnamex = f"{layer:s}_{year:d}_{doy:03d}_{country_code:s}.tif"
           geotiff_fname  = ofolder_path/geotiff_fnamex
@@ -149,7 +280,7 @@ def mosaic_and_clip(tiles,
             geotiff_fname.as_posix(),
             gdal_filenames,
             format=frmat,
-            dstNodata=255,
+            dstNodata=nodata,
             cutlineDSName=shpfile,
             cutlineWhere=f"FIPS='{country_code:s}'",
             cropToCutline=True)
@@ -157,10 +288,13 @@ def mosaic_and_clip(tiles,
           pass
         if g:
             del g
-            return geotiff_fname.as_posix()
+            ofile = geotiff_fname.as_posix()
+            if verbose:
+                print(f'returning data in {ofile}')
+            return ofile
         else:
             print(f'failed to warp {str(gdal_filenames)}  {year}, {doy}, {tiles}, {folder}')
-    else:
+      else:
         print("Only MEM, VRT or GTiff formats supported!")
         
         

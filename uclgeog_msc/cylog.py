@@ -2,6 +2,7 @@ from cryptography.fernet import Fernet
 import numpy as np
 from pathlib import Path
 from getpass import getpass
+import nasa_requests
 
 __author__ = "P Lewis"
 __copyright__ = "Copyright 2018 P Lewis"
@@ -54,6 +55,7 @@ class  cylog():
         password: str
             The NASA EarthData password
         ''' 
+        self.destination_folder = destination_folder
         self.dest_path = Path.home().joinpath(destination_folder)
         p = self.dest_path.joinpath('.cylog.npz')
         if (init == False) and p.exists():
@@ -90,5 +92,32 @@ class  cylog():
         data = np.load(self.dest_path.joinpath('.cylog.npz'))
         return (Fernet(data['key']).decrypt(np.atleast_1d(data['ciphered_user'])[0]),\
                 Fernet(data['key']).decrypt(np.atleast_1d(data['ciphered_pass'])[0]))
+
+    def test(self,verbose=False,retry=False,url = 'https://e4ftl01.cr.usgs.gov/MOTA/MCD15A3H.006/2018.09.30/'): 
+        '''
+        Run a test that the credentials work
+
+        Returns True if works,False if not.
+
+        Use verbose=True to get some comments on what is happening.
+        Use retry=True to have another go if you fail (with verbose on this time) 
+        '''
+
+        # grab the HTML information
+        try:
+            html = nasa_requests.get(url).text
+            # test a few lines of the html
+            if html[:20] == '<!DOCTYPE HTML PUBLI':
+              if verbose:
+                print('this seems to be ok ... ')
+                print('use cylog().login() anywhere you need to specify the tuple (username,password)')
+              return True
+        except:
+            if verbose:
+              print('login error ... try entering your username password again')
+            if retry:
+              self._setup(destination_folder=self.destination_folder)
+              return self.test(verbose=True,url=url,retyr=False)
+        return False
 
 
