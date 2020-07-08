@@ -51,6 +51,8 @@ def get_modis_files(doy,year,tiles,product='MCD15A3H',version=6,\
         url = f'{base_url}/{product}.{version:03d}/{datestr}'
 
         tile_urls = []
+        if verbose:
+            print(f'Looking at {url}')
 
         with requests.Session() as session:
             # get password-authorised url
@@ -69,6 +71,9 @@ def get_modis_files(doy,year,tiles,product='MCD15A3H',version=6,\
 
             tile_urls = [f'{url}/{u}' for u in tile_url]
 
+
+        if verbose:
+            print(f'Tile URLs {tile_urls}')
 
         outfiles = []
         # loop over urls

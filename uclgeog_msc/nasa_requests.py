@@ -31,5 +31,15 @@ def get(url):
                 return r
     return(None)
 
+def test(url = 'https://e4ftl01.cr.usgs.gov/MOTA/MCD15A3H.006/2018.09.30/'):
+    '''
+    Run a test that the credentials work
 
+    Returns True if works,False if not.
 
+    '''
+
+    # grab the HTML information
+    html = get(url).text
+    # test a few lines of the html
+    return html[:20] == '<!DOCTYPE HTML PUBLI'

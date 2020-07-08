@@ -12,7 +12,7 @@ from pathlib import Path
 import os
 import requests
 import shutil 
-from get_modis_files import get_modis_files
+from uclgeog_msc.get_modis_files import get_modis_files
 
 
 
@@ -66,12 +66,14 @@ def find_mcdfiles(year, doy, tiles, folder, product='MCD15A3H'):
     return mcd_files
 
 
-def create_gdal_friendly_names(filenames, layer, product='MCD15A3H'):
+def create_gdal_friendly_names(filenames, layer, grid=None,product='MCD15A3H'):
 
-    if product == 'MCD15A3H':
-        grid = 'MOD_Grid_MCD15A3H'
-    else:
-        grid = product
+
+    if grid == None:
+      #if product == 'MCD15A3H':
+      #  grid = 'MOD_Grid_MCD15A3H'
+      #else:
+      grid = product
 
     # Create GDAL friendly-names...
     gdal_filenames = []
@@ -84,17 +86,17 @@ def create_gdal_friendly_names(filenames, layer, product='MCD15A3H'):
     return gdal_filenames
 
 
-
-def mosaic_and_clip(tiles,
-                    doy,
-                    year,
+def mosaic_and_clip(tiles=['h17v03'],
+                    doy=1,
+                    year=2020,
                     ofolder=None,
                     folder="data/",
+                    grid=None,
                     layer="Lai_500m",
                     shpfile=None,
                     country_code=None,
                     product='MCD15A3H',
-                    verbose=True,
+                    verbose=False,
                     nodata=255,
                     base_url='https://e4ftl01.cr.usgs.gov/MOTA',
                     frmat="MEM"):
@@ -133,7 +135,7 @@ def mosaic_and_clip(tiles,
 
     """
 
-    tiles = list(files)
+    tiles = list(tiles)
 
     if ofolder == None:
         ofolder = folder
@@ -157,7 +159,7 @@ def mosaic_and_clip(tiles,
       print(f'files: {hdf_files}')
 
     # Create GDAL friendly-names...
-    gdal_filenames = create_gdal_friendly_names(hdf_files, layer, product=product)
+    gdal_filenames = create_gdal_friendly_names(hdf_files, layer, grid=grid,product=product)
     if verbose:
       print(f'dataset: {gdal_filenames}')
 
@@ -165,12 +167,8 @@ def mosaic_and_clip(tiles,
     If borders specified:
     '''
     # get borders if needed
-    if country_code != None: 
-      if shpfile == None:
-            shpfile = get_world(data=folder).replace('.zip','.shp')
-
+    if country_code == None: 
       if verbose:
-        print(f'{shpfile:s} shapefile used to mask FIPS code {country_code:s}');
         print(f'output format {frmat}')
         print(f'No data value: {nodata}')
  
@@ -179,7 +177,7 @@ def mosaic_and_clip(tiles,
             "",
             gdal_filenames,
             format="MEM",
-            dstNodata=nodata),
+            dstNodata=nodata)
         if g:
             data = g.ReadAsArray()
             if verbose:
@@ -229,6 +227,12 @@ def mosaic_and_clip(tiles,
         print("Only MEM, VRT or GTiff formats supported!")
 
     else:
+
+      if shpfile == None:
+            shpfile = get_world(data=folder).replace('.zip','.shp')
+
+      if verbose:
+        print(f'{shpfile:s} shapefile used to mask FIPS code {country_code:s}');
 
       if verbose:
         print(f'output format {frmat}')
@@ -385,4 +389,57 @@ def process_timeseries(year,
         dates.append(today)
         today = today + timedelta(days=4)
     return dates, lai_array, weights_array
+
+def visualise(data,title=None,vmin=None,vmax=None):
+    '''
+    Simple image visualisation plot
+
+    data: 2-D dataset
+    title: title
+    vmin: minimum value to show in colourscale
+    vmax: maximum value to show in colourscale
+    '''
+    from mpl_toolkits.axes_grid1 import make_axes_locatable
+    import matplotlib.pylab as plt
+    # packages we need
+
+    # figure size and layout
+    fig, axs = plt.subplots(1,figsize=(10,10))
+    axs = np.array(axs).flatten()
+
+    for i,ax in enumerate(axs):    
+      # plot the image
+      # thresholding min and max plotted values at 0,3
+      # using the colormap plt.cm.inferno_r
+      try:
+        im = ax.imshow(data, interpolation="nearest",
+                 vmin=vmin, vmax=vmax,
+                 cmap=plt.cm.inferno_r)
+
+        # set title, aspect ratio
+        # and sort axes for plotting colorbar
+        try:
+          ax.set_title(title)
+        except:
+          pass
+        ax.set_aspect('equal', 'box')
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="5%", pad=0.05)
+        fig.colorbar(im, cax=cax)
+      except:
+        pass
+    return
+
+
+
+def mosaic(params):
+   '''
+   Interface code to mosaic_and_clip()
+   that uses a dictionary.
+
+   We use it to avoid exposing ** to students
+   too early on.
+   '''
+   return(mosaic_and_clip(**params))
+
 
