@@ -3,6 +3,8 @@
 *.swp
 *.pyc
 
+data/*hdf
+
 build
 docs/source
 docs/res

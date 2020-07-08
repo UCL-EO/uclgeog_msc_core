@@ -8,6 +8,38 @@ from pathlib import Path
 import gdal
 from datetime import datetime, timedelta
 
+from pathlib import Path
+import os
+import requests
+import shutil 
+
+def get_world( borders_url = "http://thematicmapping.org/downloads",\
+               file="TM_WORLD_BORDERS-0.3.zip",\
+               data='data',force=False):
+  '''
+  get borders shapefile and download to data
+  '''
+  tm_borders_url = borders_url + '/' + file
+  ofile = data + '/' + file
+  # mkdir
+  Path(data).mkdir(parents=True, exist_ok=True)
+
+  if (not Path(ofile).exists()) or force:
+    try:
+      r = requests.get(tm_borders_url)
+      with open(ofile, 'wb') as fp:
+        fp.write (r.content)
+
+      shutil.unpack_archive(ofile,extract_dir=data)
+      return ofile
+    except:
+      return None
+  return ofile
+
+
+
+
+
 def get_sfc_qc(qa_data, mask57 = 0b11100000):
     sfc_qa = np.right_shift(np.bitwise_and(qa_data, mask57), 5)
     return sfc_qa
