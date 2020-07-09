@@ -90,9 +90,6 @@ RUN conda update -n base conda --yes && \
 
 # postBuild
 RUN conda install -c proflewis uclgeog_msc && \
-    conda upgrade uclgeog_msc --yes && \
-    conda install -c conda-forge jupyter_contrib_nbextensions --yes && \
-    conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes && \
     bash postBuild && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
