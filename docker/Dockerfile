@@ -87,7 +87,7 @@ RUN cd /home/$NB_USER/test && \
     conda env update -n base -f environment.yml 
 
 # postBuild
-RUN conda config --add channels profLewis && \
+RUN conda config --add channels proflewis && \
     conda install uclgeog_msc && \
     bash postBuild && \
     fix-permissions $CONDA_DIR && \
