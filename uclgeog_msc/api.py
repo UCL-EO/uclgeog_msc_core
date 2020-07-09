@@ -38,12 +38,8 @@ class getAPIkey():
                      'value': 1,
                      'key'  : 0,
                  }
-    - jupyter kernel file
-        f'{sys.prefix}/share/jupyter/kernels/{database}/kernel.json'
-        
     Result is stored in:
-    - jupyter kernel file
-        f'{sys.prefix}/share/jupyter/kernels/{database}/kernel.json'
+    ~/.bashrc
     '''
     def __init__(self,keyname='NASA_API_KEY',
                  force=False,
@@ -140,9 +136,7 @@ class getAPIkey():
         keyname = keyname or self.keyname
         keyvalue = self.keyvalue or \
            self.look_in_getenv(keyname=keyname) or \
-           self.look_in_bashrc(keyname=keyname) or\
-           self.look_in_notebook_specs(keyname=keyname,speclist=self.database) or\
-           self.look_in_notebook_specs(keyname=keyname) or \
+           self.look_in_bashrc(keyname=keyname) or
            self.give_it_to_me()
         try:
             os.environ[keyname]=keyvalue
@@ -257,7 +251,6 @@ class getAPIkey():
         '''
         write the API key to notebook and bashrc
         '''
-        spec=self.write_notebook()
         bashrc=self.write_bash()
 
 
