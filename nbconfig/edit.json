@@ -1,0 +1,13 @@
+{
+  "Editor": {
+    "file_extension_modes": {
+      ".c": "C"
+    },
+    "codemirror_options": {
+      "lineNumbers": false
+    }
+  },
+  "load_extensions": {
+    "codefolding/edit": false
+  }
+}

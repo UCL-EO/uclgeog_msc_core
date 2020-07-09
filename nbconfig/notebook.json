@@ -1,0 +1,42 @@
+{
+  "load_extensions": {
+    "nbextensions_configurator/config_menu/main": true,
+    "contrib_nbextensions_help_item/main": true,
+    "exercise/main": true,
+    "zenmode/main": false,
+    "collapsible_headings/main": true,
+    "exercise2/main": true,
+    "highlight_selected_word/main": true,
+    "autoscroll/main": true,
+    "toc2/main": false,
+    "varInspector/main": true,
+    "hide_input/main": false,
+    "printview/main": false,
+    "table_beautifier/main": false,
+    "gist_it/main": false,
+    "hide_input_all/main": false,
+    "init_cell/main": true,
+    "python-markdown/main": true,
+    "rubberband/main": true,
+    "jupyter-js-widgets/extension": true,
+    "jupyter-matplotlib/extension": true,
+    "equation-numbering/main": true,
+    "nbTranslate/main": false,
+    "hinterland/hinterland": true,
+    "toggle_all_line_numbers/main": true,
+    "execution_dependencies/execution_dependencies": true,
+    "codefolding/main": true,
+    "help_panel/help_panel": true,
+    "datestamper/main": false,
+    "highlighter/highlighter": true
+  },
+  "highlight_selected_word": {
+    "outlines_only": false
+  },
+  "toc2": {
+    "toc_window_display": true,
+    "collapse_to_match_collapsible_headings": true,
+    "markTocItemOnScroll": true,
+    "toc_cell": false
+  }
+}
