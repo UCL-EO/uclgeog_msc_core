@@ -1,8 +1,15 @@
 # Welcome to uclgeog_msc_core: Scientific Computing 
 UCL Geography: Level 7 course, Scientific Computing
 
+
+
 ![](images/ucl_logo.png)
 
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/platforms.svg)](https://anaconda.org/proflewis/uclgeog_msc)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/latest_release_date.svg)](https://anaconda.org/proflewis/uclgeog_msc)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/version.svg)](https://anaconda.org/proflewis/uclgeog_msc)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/downloads.svg)](https://anaconda.org/proflewis/uclgeog_msc)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/installer/conda.svg)](https://conda.anaconda.org/proflewis)
 [![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/r/proflewis/uclgeog_msc) 
 [![metadata](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
 
