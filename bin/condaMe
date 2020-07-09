@@ -1,0 +1,12 @@
+#!/bin/bash
+
+rm -rf *egg*
+rm -rf dist/uclgeog_msc*
+here=`pwd`
+
+conda config --set anaconda_upload yes
+cd ..
+conda-build uclgeog_msc_core
+conda install uclgeog_msc --yes
+cd "${here}"
+bash postBuild
