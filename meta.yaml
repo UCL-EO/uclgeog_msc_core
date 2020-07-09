@@ -16,7 +16,7 @@ requirements:
 
 test:
   imports:
-    -
+    - uclgeog_msc
 
 about:
   home:
