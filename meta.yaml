@@ -8,6 +8,7 @@ source:
 
 requirements:
   build:
+    noarch: generic
     - python
     - setuptools
 
