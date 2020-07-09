@@ -257,8 +257,8 @@ class getAPIkey():
         '''
         write the API key to notebook and bashrc
         '''
-        spec=api.write_notebook()
-        bashrc=api.write_bash()
+        spec=self.write_notebook()
+        bashrc=self.write_bash()
 
 
 
