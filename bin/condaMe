@@ -8,5 +8,9 @@ conda config --set anaconda_upload yes
 cd ..
 conda-build uclgeog_msc_core
 conda install uclgeog_msc --yes
+conda upgrade uclgeog_msc --yes
+conda install -c conda-forge jupyter_contrib_nbextensions
+conda upgrade -c conda-forge jupyter_contrib_nbextensions
+
 cd "${here}"
 bash postBuild

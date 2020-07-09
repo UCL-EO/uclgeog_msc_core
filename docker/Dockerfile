@@ -46,8 +46,10 @@ ENV PATH=$CONDA_DIR/bin:$PATH \
 
 RUN curl -O https://raw.githubusercontent.com/jupyter/docker-stacks/master/base-notebook/fix-permissions && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/environment.yml && \
+    curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/meta.yml && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/notebook.ipynb && \
     curl -O 'https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/NASA MODIS Earthdata.ipynb' && \
+    curl -O 'https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/API.ipynb' && \
     curl -O https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/postBuild && \
     chmod a+rx fix-permissions && \
     cp fix-permissions /usr/local/bin/fix-permissions
@@ -83,11 +85,15 @@ RUN conda update -n base conda --yes && \
 #    fix-permissions /home/$NB_USER 
 
 # update packages
-RUN cd /home/$NB_USER/test && \
-    conda env update -n base -f environment.yml 
+#RUN cd /home/$NB_USER/test && \
+#    conda env update -n base -f environment.yml 
 
 # postBuild
-RUN conda install proflewis uclgeog_msc && \
+RUN conda install -c proflewis uclgeog_msc && \
+    conda install uclgeog_msc --yes && \
+    conda upgrade uclgeog_msc --yes && \
+    conda install -c conda-forge jupyter_contrib_nbextensions --yes && \
+    conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes && \
     bash postBuild && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
