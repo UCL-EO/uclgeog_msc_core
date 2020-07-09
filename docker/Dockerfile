@@ -93,7 +93,7 @@ RUN cd /home/$NB_USER/test && \
 
 # download data package from pypi
 # permissions check
-RUN pip install -i https://test.pypi.org/simple/ uclgeog_msc && \
+RUN pip install uclgeog_msc --upgrade && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
