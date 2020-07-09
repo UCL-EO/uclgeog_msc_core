@@ -11,3 +11,5 @@ conda install uclgeog_msc --yes
 
 cd "${here}"
 bash postBuild
+conda build purge
+
