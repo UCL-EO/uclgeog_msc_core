@@ -4,7 +4,7 @@
 *.pyc
 tmp
 data/*hdf
-
+*eggs
 build
 docs/source
 docs/res
