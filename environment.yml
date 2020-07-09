@@ -1,6 +1,7 @@
 name: uclgeog_msc_core
 channels:
   - conda-forge
+  - anaconda
   - defaults
 dependencies:
   - nb_conda
@@ -42,4 +43,4 @@ dependencies:
   - setuptools>=47.1.1
   - six>=1.15.0
   - yaml>=0.2.5
-    
+  - pillow  
