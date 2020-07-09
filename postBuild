@@ -1,6 +1,6 @@
 conda upgrade -c proflewis uclgeog_msc --yes 
 conda install -c conda-forge jupyter_contrib_nbextensions --yes 
-conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes 
+#conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes 
 
 jupyter contrib nbextension install --user
 jupyter nbextension enable --py widgetsnbextension
