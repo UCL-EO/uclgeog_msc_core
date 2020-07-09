@@ -8,3 +8,12 @@ jupyter nbextension enable rubberband/main
 jupyter nbextension enable exercise2/main
 jupyter nbextension enable collapsible_headings/main
 jupyter nbextension enable --py --sys-prefix widgetsnbextension
+
+# Add jupyterlab extensions here (some might need installing via conda/pip)
+
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+jupyter labextension install jupyter-leaflet
+
+# Trust notebooks in repo
+jupyter trust *.ipynb
+
