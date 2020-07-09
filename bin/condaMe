@@ -4,12 +4,35 @@ rm -rf *egg*
 rm -rf dist/uclgeog_msc*
 here=`pwd`
 
+echo "--------------------"
+echo "# conda config"
+echo "--------------------"
 conda config --set anaconda_upload yes
 cd ..
+
+echo "--------------------"
+echo "# conda build"
+echo "--------------------"
 conda-build uclgeog_msc_core
+
+echo "--------------------"
+echo "# conda install -c proflewis uclgeog_msc"
+echo "--------------------"
 conda install -c proflewis uclgeog_msc --yes
+
+echo "--------------------"
+echo "# conda upgrade -c proflewis uclgeog_msc"
+echo "--------------------"
 conda upgrade -c proflewis uclgeog_msc --yes
+
+echo "--------------------"
+echo "# conda install -c conda-forge jupyter_contrib_nbextensions"
+echo "--------------------"
 conda install -c conda-forge jupyter_contrib_nbextensions --yes
+
+echo "--------------------"
+echo "# conda upgrade -c conda-forge jupyter_contrib_nbextensions"
+echo "--------------------"
 conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes
 
 cd "${here}"
