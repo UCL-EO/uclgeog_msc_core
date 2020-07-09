@@ -36,7 +36,7 @@ dependencies:
   - pandocfilters>=1.4.2
   - pickleshare>=0.7.5
   - pip>=20.1.1
-  - python>=3.7.6
+  - python>=3.8
   - readline>=8.0
   - requests>=2.23.0
   - scipy>=1.4.1
