@@ -34,13 +34,13 @@ Pull docker image and test
 
 Next, pull the docker image and run a test notebook. In a terminal, type:
 
-	docker run -w /home/jovyan/test -it -p 8888:8888 proflewis/uclgeog_msc bash -c "jupyter notebook test.ipynb"
+	docker run -p 8888:8888 proflewis/uclgeog_msc 
 
 This should download the docker image (if it isnt already downloaded) and print some text such as:
 
 	http://127.0.0.1:8888/?token=780c0c7038061608a8e9c92a293c8ecc3b04f173ef281734
 
-Open a browser with that address.
+Open a browser with that address, then navigate to the notebook you want to use.
 
 ### Course Convenor
 
