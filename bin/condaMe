@@ -7,7 +7,10 @@ here=`pwd`
 conda config --set anaconda_upload yes
 cd ..
 conda-build uclgeog_msc_core
-conda install uclgeog_msc --yes
+conda install -c proflewis uclgeog_msc --yes
+conda upgrade -c proflewis uclgeog_msc --yes
+conda install -c conda-forge jupyter_contrib_nbextensions --yes
+conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes
 
 cd "${here}"
 bash postBuild
