@@ -87,13 +87,9 @@ RUN cd /home/$NB_USER/test && \
     conda env update -n base -f environment.yml 
 
 # postBuild
-#RUN conda config --add channels profLewis && \
-#    conda install uclgeog_msc_core && \
-#    bash postBuild
-
-# download data package from pypi
-# permissions check
-RUN pip install uclgeog_msc --upgrade && \
+RUN conda config --add channels profLewis && \
+    conda install uclgeog_msc && \
+    bash postBuild && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
