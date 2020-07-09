@@ -1,12 +1,11 @@
 #!/bin/bash
 
-python3 -m pip install --user --upgrade twine
 rm -rf *egg*
 rm -rf dist/uclgeog_msc*
 
 python setup.py install
 python setup.py sdist
-python3 -m twine upload --repository pypi dist/uclgeog_msc*
+anaconda upload --force dist/uclgeog_msc*.tar.gz
 
 # update local
 python setup.py install && bash postBuild

@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - anaconda
   - defaults
+  - profLewis
 dependencies:
   - nb_conda
   - anaconda-client 
@@ -44,3 +45,4 @@ dependencies:
   - six>=1.15.0
   - yaml>=0.2.5
   - pillow  
+  - uclgeog_msc
