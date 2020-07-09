@@ -5,7 +5,6 @@ channels:
   - defaults
 dependencies:
   - nb_conda
-  - anaconda-client 
   - conda-build
   - conda-verify  
   - conda-build
