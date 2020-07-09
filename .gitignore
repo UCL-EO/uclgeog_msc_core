@@ -2,7 +2,7 @@
 *.d
 *.swp
 *.pyc
-
+tmp
 data/*hdf
 
 build
