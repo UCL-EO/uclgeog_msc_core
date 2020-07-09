@@ -31,8 +31,9 @@ if [ $purge -eq 1 ]; then
   echo "purge: $purge"
   docker system prune -fa
 fi
+# --no-run 
 
-jupyter-repo2docker --push --user-name jovyan --image-name proflewis/uclgeog_msc  https://github.com/UCL-EO/uclgeog_msc_core
+jupyter-repo2docker --target-repo-dir uclgeog_msc --push --user-name jovyan --image-name proflewis/uclgeog_msc  https://github.com/UCL-EO/uclgeog_msc_core 
 
 # redundant
 #docker build --rm -t jupyter/uclgeog_msc  docker 
