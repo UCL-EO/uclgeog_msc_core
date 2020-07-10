@@ -17,7 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name " 'trier'
+    - name: 'trier'
       - run: echo github.event.inputs.name
       
     - name: 'noname_push'
