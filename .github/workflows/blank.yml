@@ -1,4 +1,4 @@
-name: test-flow
+name: test
 
 on:
   workflow_dispatch:
@@ -7,26 +7,15 @@ on:
         description: 'Manual trigger'
         required: true
         default: 'Test'
+  pull_request:
+    types: [opened, reopened]
     
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
-    name: echo 1      
-    - run:
-        echo "${{ github.event.inputs.name }}"
-        
-    name: echo 2   
-    - run:
-        echo "${{ github.event.inputs.name }}"
-        
-    name: err
+    
+    - name: 'noname'
     if: github.event == 'workflow_dispatch'
-    - run:
-        pwd
-        
-    name: err2
-    if: github.event != 'workflow_dispatch'
-    - run:
-        ls       
+    - run: pwd
+
