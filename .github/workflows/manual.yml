@@ -17,6 +17,7 @@ jobs:
         echo github.event
 
     - name: checkout files in repo
+      if: github.event != 'workflow_dispatch'
       uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.sha }}
@@ -24,6 +25,7 @@ jobs:
 #      uses: actions/checkout@master
 
     - name: update jupyter dependencies with repo2docker
+      if: github.event != 'workflow_dispatch'
       uses: machine-learning-apps/repo2docker-action@0.2
       with:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
