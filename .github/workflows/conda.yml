@@ -1,0 +1,20 @@
+name: Conda package setup
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Manual trigger'
+        required: true
+        default: 'Update Docker'
+
+jobs:
+  build:
+    # Job name is Greeting
+    name: Greeting
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Time
+        run: echo 'The time was ${{ steps.hello.outputs.time }}.'  
+      - name: conda package
+        working-directory: .
+        run: bin/condaMe
