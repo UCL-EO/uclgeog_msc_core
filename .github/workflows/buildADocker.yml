@@ -16,7 +16,11 @@ jobs:
         echo "${{ github.event.inputs.name }}"
 
     - name: checkout files in repo
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+#    - name: checkout files in repo
+#      uses: actions/checkout@master
 
     - name: update jupyter dependencies with repo2docker
       uses: machine-learning-apps/repo2docker-action@0.2
