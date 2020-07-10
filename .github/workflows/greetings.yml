@@ -7,10 +7,12 @@ on:
         description: 'Manual trigger'
         required: true
         default: 'Test'
-    
+  pull_request:
+    types: [opened, reopened]
+      
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - if: github.event == 'workflow_dispatch'
+    - if: github.event == 'pull_request'
       run: echo "hello world"
