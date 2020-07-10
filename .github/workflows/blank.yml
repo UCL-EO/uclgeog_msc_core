@@ -8,11 +8,7 @@ on:
         required: true
         default: 'workflow_dispatch'
   push:
-    inputs:
-      name:
-        description: 'name'
-        required: true
-        default: 'push'    
+
 jobs:
   build:
     runs-on: ubuntu-latest
