@@ -17,9 +17,4 @@ jobs:
     - run:
         echo "${{ github.event.inputs.name }}"
     if: github.event == 'workflow_dispatch'
-    uses: actions/github-script@v1   
-    id: set-result
-    with:
-      script: return "Hello!"
-      result-encoding: string
-      run: echo "${{steps.set-result.outputs.result}}"
+    run: echo "hello world"
