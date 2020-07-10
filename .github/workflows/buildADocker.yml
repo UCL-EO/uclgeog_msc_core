@@ -6,7 +6,7 @@ on:
       name:
         description: 'Manual trigger'
         required: true
-        default: 'Generate Docker'
+        default: 'Update Docker'
 
 jobs:
   build:
