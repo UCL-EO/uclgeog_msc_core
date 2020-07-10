@@ -55,3 +55,6 @@ dependencies:
   - jupyter_nbextensions_configurator
   - git
   - jupyterlab_code_formatter
+  - nbsphinx
+  - sphinx
+  - ipykernel
