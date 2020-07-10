@@ -1,46 +1,57 @@
-name: uclgeog_msc_core
+name: msc_core 
 channels:
   - conda-forge
-  - anaconda
   - defaults
 dependencies:
-  - nb_conda
-  - conda-build
-  - conda-verify  
-  - conda-build
+  - conda
+  - python=3.7
+  - nb_conda_kernels
+  - libgdal
+  - geopandas
+  - rasterio
+  - scipy
+  - gdal
+  - beautifulsoup4
+  - fiona
+  - numpy
+  - statsmodels
+  - cartopy
+  - scikit-image
+  - netcdf4
+  - scikit-learn
+  - matplotlib
+  - pandas
+  - shapely
+  - ipyleaflet
+  - pytest
+  - seaborn
+  - hdf5
+  - sympy
+  - iris
+  - autopep8
+  - flake8
   - ipython
   - ipywidgets
-  - gdal>=3.0.4
-  - hdf5>=1.10.5
-  - ipykernel>=5.3.0
-  - jupyter
-  - jupyter_client>=6.1.3
-  - jupyter_console>=6.1.0
-  - jupyter_contrib_core>=0.3.3
+  - nbdime
+  - xarray
   - jupyter_contrib_nbextensions
-  - jupyter_core>=4.6.3
-  - jupyter_highlight_selected_word>=0.2.0
-  - jupyter_nbextensions_configurator>=0.4.1
-  - jupyterlab>=2.1.3
-  - libgdal>=3.0.4
-  - libnetcdf>=4.7.4
-  - matplotlib>=3.2.1
-  - nbconvert>=5.6.1
-  - nbformat>=5.0.6
-  - notebook>=6.0.3
-  - jupyterhub>=1.1.0
-  - numpy
-  - pandas>=1.0.4
-  - pandoc>=2.9.2.1
-  - pandocfilters>=1.4.2
-  - pickleshare>=0.7.5
-  - pip>=20.1.1
-  - python>=3.7.1
-  - readline>=8.0
-  - requests>=2.23.0
-  - scipy>=1.4.1
-  - setuptools>=47.1.1
-  - six>=1.15.0
-  - yaml>=0.2.5
-  - pillow  
-  
+  - spyder
+  - dask
+  - black
+  - folium
+  - jupyter_highlight_selected_word
+  - jupyter_contrib_core
+  - jupyter_console
+  - pandocfilters
+  - nbconvert
+  - jupyterlab
+  - nb_conda
+  - jupyter
+  - nbformat
+  - pandoc
+  - nco
+  - pyephem
+  - libnetcdf
+  - jupyter_nbextensions_configurator
+  - git
+  - jupyterlab_code_formatter
