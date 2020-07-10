@@ -1,0 +1,33 @@
+name: upload-on-manual-trigger
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Manual trigger'
+        required: true
+        default: 'Update Docker'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "${{ github.event.inputs.name }}"
+
+    - name: checkout files in repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+#    - name: checkout files in repo
+#      uses: actions/checkout@master
+
+    - name: update jupyter dependencies with repo2docker
+      uses: machine-learning-apps/repo2docker-action@0.2
+      with:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        IMAGE_NAME: "proflewis/uclgeog_msc"
+        NOTEBOOK_USER: "msc_ucl"
+        BINDER_CACHE: true
+        PUBLIC_REGISTRY_CHECK: true
