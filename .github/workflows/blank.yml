@@ -21,7 +21,7 @@ jobs:
       run: echo "Hello ${{ github.event.inputs.name }}"
       
     - name: 'noname_push'
-      if: github.event == 'push'
+      if: github.event.inputs.name != 'workflow_dispatch'
       run: echo "Hello ${{ github.event.inputs.name }}"
   
     - name: 'noname_manual'
