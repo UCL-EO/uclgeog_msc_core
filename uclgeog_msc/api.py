@@ -205,7 +205,15 @@ class getAPIkey():
         verbose = self.verbose
         bashenv = bashenv or self.bashenv
         keyname = keyname or self.keyname
+
+        # get current value of keyvalue from
+        # bashrc
+        bash_keyvalue = self.look_in_bashrc(keyname=keyname,
+                                       bashenv=bashenv)
         keyvalue = self.find()
+        if bash_keyvalue == keyvalue:
+          # dont bother
+          return None
         try:
             kernel = Path.home() / bashenv['name']
             # write to the end of this
@@ -274,14 +282,18 @@ class getAPIkey():
         except:
             return None
 
-    def set(self):
+    def set(self,keyname=None):
         '''
         write the API key to notebook and bashrc
         '''
-        # absh
-        bashrc=self.write_bash()
+        keyname = keyname or self.keyname
+        keyvalue = self.find()
+
+        # bash
+        bashrc=self.write_bash(keyname=keyname)
         # zsh
-        zshrc = self.write_bash(bashenv=self.zshenv)
+        zshrc = self.write_bash(keyname=keyname,
+                                bashenv=self.zshenv)
 
 
 def api_main():
