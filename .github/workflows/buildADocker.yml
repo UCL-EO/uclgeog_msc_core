@@ -1,6 +1,9 @@
-name: Test
-    
-on: [push]
+name: upload-on-release 
+
+on:
+  push:
+    tags:
+      - "v*"
 
 jobs:
   build:
