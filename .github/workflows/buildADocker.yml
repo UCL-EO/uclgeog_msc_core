@@ -1,12 +1,14 @@
 name: Test
-on: push
+    
+on: [push]
 
 jobs:
-  binder:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.pull_request.head.sha }}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: checkout files in repo
+      uses: actions/checkout@master
 
     - name: update jupyter dependencies with repo2docker
       uses: machine-learning-apps/repo2docker-action@0.2
