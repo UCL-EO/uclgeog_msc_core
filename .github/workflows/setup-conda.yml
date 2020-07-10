@@ -1,2 +1,7 @@
 - name: setup-conda
-  uses: s-weigand/setup-conda
+  
+steps:
+  - uses: actions/checkout@v2
+  - uses: s-weigand/setup-conda@v1
+  - run: conda --version
+  - run: which python
