@@ -1,11 +1,32 @@
 name: test
 
-on: [workflow_dispatch]
-
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Manual trigger'
+        required: true
+        default: 'Test'
+    
 jobs:
-  greeting:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - run: |
+      
+    name: echo 1      
+    - run:
         echo "${{ github.event.inputs.name }}"
-        echo "${{ github.event }}"
+        
+    name: echo 2   
+    - run:
+        echo "${{ github.event.inputs.name }}"
+        
+    name: err
+    if: github.event == 'workflow_dispatch'
+    - run:
+        pwd
+        
+    name: err2
+    if: github.event != 'workflow_dispatch'
+    - run:
+        ls       
