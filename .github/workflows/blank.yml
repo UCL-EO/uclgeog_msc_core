@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 'trier'
-      run: "Hello ${{ github.event.inputs.name }}"
+      run: echo "Hello ${{ github.event.inputs.name }}"
       
     - name: 'noname_push'
       if: ${{github.event.inputs.name}} == 'push'
