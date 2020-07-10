@@ -23,5 +23,7 @@ jobs:
       with:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        IMAGE_NAME: "proflewis/uclgeog_msc"
+        NOTEBOOK_USER: "msc_ucl"
         BINDER_CACHE: true
         PUBLIC_REGISTRY_CHECK: true
