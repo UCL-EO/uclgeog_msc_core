@@ -43,7 +43,9 @@ class getAPIkey():
     ~/.bashrc
     ~/.zshrc
     '''
-    def __init__(self,keyname='NASA_API_KEY',
+    def __init__(self,
+                 keyname='NASA_API_KEY',
+                 keyweb='https://api.nasa.gov/',
                  force=False,
                  verbose=False,
                  bashenv={
@@ -56,6 +58,7 @@ class getAPIkey():
                  store=True,
                  backup='python3',
                  database='uclgeog_msc_core'):
+        self.keyweb = keyweb
         self.keyname = keyname
         self.force = force
         self.verbose = verbose
@@ -131,12 +134,13 @@ class getAPIkey():
             pass
         return keyvalue
     
-    def give_it_to_me(self,keyname=None):
+    def give_it_to_me(self,keyname=None,keyweb=None):
         '''
         interactive request for API key from user
         '''
         keyname = keyname or self.keyname
-        keyvalue = getpass(prompt=f'Enter {keyname}:')
+        keyweb = keyweb or self.keyweb
+        keyvalue = getpass(prompt=f'For {keyweb}\nEnter {keyname}:')
         return keyvalue
     
     def find(self,keyname=None):
@@ -302,8 +306,9 @@ def api_main():
 
   force = True to force input from user
   '''
-  keyname='NASA_API_KEY'
-  api = getAPIkey(keyname,force=False)
+  keyname= 'NASA_API_KEY'
+  keyweb = 'https://api.nasa.gov/'
+  api = getAPIkey(keyname,keyweb,force=False)
   keyvalue = api.find()
   api.set()
   api.make_icons('images')
