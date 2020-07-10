@@ -1,9 +1,13 @@
 name: Build Notebook Container
-on: [push, pull_request]
+
+on:
+  watch:
+    types: [started]
 
 jobs:
   build-image-without-pushing:
     runs-on: ubuntu-latest
+    if: github.actor == github.event.repository.owner.login
     steps:  
     - name: Checkout
       uses: actions/checkout@v2
