@@ -58,3 +58,4 @@ dependencies:
   - nbsphinx
   - sphinx
   - ipykernel
+  - importlib_metadata

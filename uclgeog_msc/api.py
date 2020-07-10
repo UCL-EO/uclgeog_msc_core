@@ -14,7 +14,7 @@ from getpass import getpass
 from pathlib import Path
 from jupyter_client import kernelspec
 import requests
-from PIL import Image, ImageOps
+from PIL import Image
 
 class getAPIkey():
     '''
@@ -26,6 +26,7 @@ class getAPIkey():
     Checklist of places to look:
     - os.getenv(keyname)
     - ~/.bashrc
+    - ~/.zshrc
       as environment variable
       of form: 
           NASA_API_KEY=1234567ghts
@@ -40,6 +41,7 @@ class getAPIkey():
                  }
     Result is stored in:
     ~/.bashrc
+    ~/.zshrc
     '''
     def __init__(self,keyname='NASA_API_KEY',
                  force=False,
@@ -57,7 +59,12 @@ class getAPIkey():
         self.keyname = keyname
         self.force = force
         self.verbose = verbose
+        # bash
         self.bashenv = bashenv
+        # zsh
+        self.zshenv=self.bashenv.copy()
+        self.zshenv['name'] = '.zshrc'
+        
         self.store = store
         
         # these are notebook kernels
@@ -136,7 +143,8 @@ class getAPIkey():
         keyname = keyname or self.keyname
         keyvalue = self.keyvalue or \
            self.look_in_getenv(keyname=keyname) or \
-           self.look_in_bashrc(keyname=keyname) or
+           self.look_in_bashrc(keyname=keyname) or \
+           self.look_in_bashrc(keyname=keyname,bashenv=self.zshenv) or \
            self.give_it_to_me()
         try:
             os.environ[keyname]=keyvalue
@@ -144,15 +152,34 @@ class getAPIkey():
             pass
         return keyvalue
     
-    def make_icons(self,spec):
+    def make_icons(self,spec,relative_to_home=True):
         '''
         Use UCL icon file to make 64 x 64 and 32 x 32 logo images
         and store in resource dir
+
+        spec: directory to place icons
+        
+        relative_to_home : whether spec is relative to home or not
+                           default: True
         '''
+
+        # sort directory for op
+        if (type(spec) is str) or \
+           (type(spec) is pathlib.PosixPath):
+          if relative_to_home:
+            # relative to HOME
+            resource_dir = Path.home() / spec
+          else:
+            resource_dir = Path(spec)
+          # mkdir
+          resource_dir.mkdir(parents=True, exist_ok=True)
+        else:
+          resource_dir = spec.resource_dir
+
         # put logo file in resource dir
-        ucllogo = Path(spec.resource_dir + '/ucl_logo.png')
-        logo3232 = Path(spec.resource_dir + '/logo-32x32.png')
-        logo6464 = Path(spec.resource_dir + '/logo-64x64.png')
+        ucllogo = Path(resource_dir).joinpath('ucl_logo.png')
+        logo3232 = Path(resource_dir).joinpath('logo-32x32.png')
+        logo6464 = Path(resource_dir).joinpath('logo-64x64.png')
         url = 'https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/images/ucl_logo.png'
         try:
             r = requests.get(url, allow_redirects=True)
@@ -240,7 +267,7 @@ class getAPIkey():
                     print(f'jupyter kernel written to {kernel}')
                 f.write(json_object) 
 
-            self.make_icons(spec)
+            self.make_icons(spec.resource_dir)
             # load again for luck
             spec = kernelspec.get_kernel_spec(specname)
             return spec
@@ -251,8 +278,10 @@ class getAPIkey():
         '''
         write the API key to notebook and bashrc
         '''
+        # absh
         bashrc=self.write_bash()
-
+        # zsh
+        zshrc = self.write_bash(bashenv=self.zshenv)
 
 
 def api_main():
@@ -265,6 +294,7 @@ def api_main():
   api = getAPIkey(keyname,force=False)
   keyvalue = api.find()
   api.set()
+  api.make_icons('images')
   print(keyname,keyvalue)
 
 if __name__ == "__main__":
