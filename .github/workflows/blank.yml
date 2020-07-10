@@ -12,6 +12,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      
+    name: echo 1      
     - run:
         echo "${{ github.event.inputs.name }}"
-        echo github.event
+        
+    name: echo 2   
+    - run:
+        echo "${{ github.event.inputs.name }}"
+        
+    name: err
+    if: github.event == 'workflow_dispatch'
+    - run:
+        pwd
+        
+    name: err2
+    if: github.event != 'workflow_dispatch'
+    - run:
+        ls       
