@@ -4,25 +4,25 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Manual trigger'
+        description: 'name'
         required: true
-        default: 'Test'
+        default: 'workflow_dispatch'
   push:
     inputs:
       name:
-        description: 'pusher'
+        description: 'name'
         required: true
-        default: 'Test pusher'    
+        default: 'push'    
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       
     - name: 'noname_push'
-      if: github.event == push
-      run: echo github.workflow
+      if: github.event.inputs.name == 'push'
+      run: echo 'blaa blaa'
   
     - name: 'noname_manual'
-      if: github.event == 'workflow_dispatch'
-      run: echo github.job
+      if: github.event.inputs.name == 'workflow_dispatch'
+      run: echo 'workflow -- dispatch'
 
