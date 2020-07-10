@@ -20,9 +20,9 @@ jobs:
       
     - name: 'noname_push'
       if: github.event == 'push'
-      run: echo ${github.event.inputs.name}
+      run: echo github.workflow
   
     - name: 'noname_manual'
       if: github.event == 'workflow_dispatch'
-      run: echo ${{github.event.inputs.name}}
+      run: echo github.job
 
