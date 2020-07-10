@@ -18,11 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-    - name: 'noname'
-      if: github.event != 'push'
-      run: echo ${{github.event.inputs.name}}
+    - name: 'noname_push'
+      if: github.event == 'push'
+      run: echo ${github.event.inputs.name}
   
-    - name: 'noname'
+    - name: 'noname_manual'
       if: github.event == 'workflow_dispatch'
       run: echo ${{github.event.inputs.name}}
 
