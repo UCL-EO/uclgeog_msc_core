@@ -12,21 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
-    name: echo1      
     - run:
         echo "${{ github.event.inputs.name }}"
-        
-    name: echo2   
     - run:
         echo "${{ github.event.inputs.name }}"
-        
-    name: err
     if: github.event == 'workflow_dispatch'
-    - run:
-        pwd
-        
-    name: err2
-    if: github.event != 'workflow_dispatch'
-    - run:
-        ls       
+    uses: actions/github-script@v1   
+    id: set-result
+    with:
+      script: return "Hello!"
+      result-encoding: string
+      run: echo "${{steps.set-result.outputs.result}}"
