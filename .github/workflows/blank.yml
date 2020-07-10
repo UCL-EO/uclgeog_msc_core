@@ -17,5 +17,5 @@ jobs:
     
     - name: 'noname'
     if: github.event == 'workflow_dispatch'
-    - run: pwd
+    run: pwd
 
