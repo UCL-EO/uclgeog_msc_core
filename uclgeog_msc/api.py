@@ -7,7 +7,7 @@ __license__ = "GPLv3"
 __email__ = "p.lewis@ucl.ac.uk"
 
 
-import sys
+import sys, getopt
 import json
 import os
 from getpass import getpass
@@ -27,21 +27,26 @@ class getAPIkey():
     - os.getenv(keyname)
     - ~/.bashrc
     - ~/.zshrc
+    - ~/.jupyter/.keys.dat
       as environment variable
       of form: 
           NASA_API_KEY=1234567ghts
       The interpretation is configurable to allow for other shells
       via the parameters
                  bashenv={
-                     'name' :'.bashrc',
+                     'name' : '~/.jupyter/.keys.dat',
                      'split':'=',
                      'len'  : 2,
                      'value': 1,
                      'key'  : 0,
                  }
     Result is stored in:
-    ~/.bashrc
-    ~/.zshrc
+    ~/.jupyter/.keys.dat
+
+    and 
+
+    source ~/.jupyter/.keys.dat put in ~/.bashrc and ~/.zshrc
+
     '''
     def __init__(self,
                  keyname='NASA_API_KEY',
@@ -49,7 +54,7 @@ class getAPIkey():
                  force=False,
                  verbose=False,
                  bashenv={
-                     'name' :'.bashrc',
+                     'name' :'.jupyter/.keys.dat',
                      'split':'=',
                      'len'  : 2,
                      'value': 1,
@@ -57,13 +62,19 @@ class getAPIkey():
                  },
                  store=True,
                  backup='python3',
+                 keyfile='.jupyter/.keys.dat',
+                 source='source',
                  database='uclgeog_msc_core'):
+        self.keyfile = keyfile
+        self.source = source
         self.keyweb = keyweb
         self.keyname = keyname
         self.force = force
         self.verbose = verbose
+        self.keyenv = bashenv
         # bash
-        self.bashenv = bashenv
+        self.bashenv = bashenv.copy()
+        self.bashenv['name'] = '.bashrc'
         # zsh
         self.zshenv=self.bashenv.copy()
         self.zshenv['name'] = '.zshrc'
@@ -83,6 +94,7 @@ class getAPIkey():
         
         # get it from env if its there
         self.keyvalue = None
+
         
     def look_in_getenv(self,keyname=None):
         keyname = keyname or self.keyname
@@ -90,7 +102,7 @@ class getAPIkey():
         return keyvalue
         
     def look_in_bashrc(self,keyname=None,bashenv=None):
-        bashenv = bashenv or self.bashenv
+        bashenv = bashenv or self.keyenv
         keyname = keyname or self.keyname
         keyvalue = None
         try:
@@ -144,10 +156,14 @@ class getAPIkey():
         return keyvalue
     
     def find(self,keyname=None):
+        '''
+        Look in a list of places for keyname env variable
+        '''
         keyname = keyname or self.keyname
         keyvalue = self.keyvalue or \
            self.look_in_getenv(keyname=keyname) or \
-           self.look_in_bashrc(keyname=keyname) or \
+           self.look_in_bashrc(keyname=keyname,bashenv=self.keyenv) or \
+           self.look_in_bashrc(keyname=keyname,bashenv=self.bashenv) or \
            self.look_in_bashrc(keyname=keyname,bashenv=self.zshenv) or \
            self.give_it_to_me()
         try:
@@ -203,8 +219,8 @@ class getAPIkey():
 
     def write_bash(self,keyname=None,bashenv=None):
         '''
-        Dont change the bashenv at the moment
-        as its only partially implemented
+        write env variable to file in bashenv['name']
+        if its any different to what is there 
         '''
         verbose = self.verbose
         bashenv = bashenv or self.bashenv
@@ -212,10 +228,10 @@ class getAPIkey():
 
         # get current value of keyvalue from
         # bashrc
-        bash_keyvalue = self.look_in_bashrc(keyname=keyname,
+        key_keyvalue = self.look_in_bashrc(keyname=keyname,
                                        bashenv=bashenv)
         keyvalue = self.find()
-        if bash_keyvalue == keyvalue:
+        if key_keyvalue == keyvalue:
           # dont bother
           return None
         try:
@@ -232,6 +248,8 @@ class getAPIkey():
     def write_notebook(self,specname=None,backup=None,keyname=None):
         '''
         write keyvalue into database notebook kernel file
+
+        This is an experimantal feature ... wouldnt advise using it
         '''
         verbose = self.verbose
         # see https://jupyter-client.readthedocs.io/en/latest/kernels.html
@@ -286,34 +304,94 @@ class getAPIkey():
         except:
             return None
 
-    def set(self,keyname=None):
+    def set(self,keyname=None,verbose=None):
         '''
         write the API key to notebook and bashrc
         '''
+        verbose = verbose or self.verbose
         keyname = keyname or self.keyname
         keyvalue = self.find()
 
-        # bash
-        bashrc=self.write_bash(keyname=keyname)
-        # zsh
-        zshrc = self.write_bash(keyname=keyname,
-                                bashenv=self.zshenv)
+        # write to key file
+        keyrc = self.write_bash(keyname=keyname,
+                                bashenv=self.keyenv)
 
+        if keyrc is not None:
+          if verbose:
+            print(f'setting {keyname} in {keyrc}')
+          # change permissions 
+          # in file keyrc to -rw-------
+          Path(keyrc).chmod(0o600)
+          
+          # source keyrc in self.zshenv['name']
+          # and self.bashenv['name']
+          for name in [self.bashenv['name'], 
+                       self.zshenv['name']]:
+            # source
+            string = self.source + ' ' + str(keyrc)
+            kernel = Path.home() / name
+            # check that the line string
+            # isnt already in the file kernel
+            try:
+              with(open(kernel,'r')) as f:
+                lines = [i.strip() for i in f.readlines()]
+              if not string in lines:
+                # write to the end of this
+                if verbose:
+                  print(f'updating {str(kernel)} with {string}') 
+                with(open(kernel,'a+')) as f:
+                  web='https://github.com/UCL-EO/uclgeog_msc_core/blob/master/uclgeog_msc/api.py'
+                  f.write(f'# API keys\n')
+                  f.write(f'# see {web}\n')
+                  f.write(f'trap "" ERR\n') 
+                  f.write(string)
+            except:
+              pass
 
-def api_main():
-  '''
-  Use of api grabber
+def main(argv):
+   keyname= 'NASA_API_KEY'
+   keyweb = 'https://api.nasa.gov/'
+   force=False
+   verbose=True
+   make_icons=False
+   icondir='images'
 
-  force = True to force input from user
-  '''
-  keyname= 'NASA_API_KEY'
-  keyweb = 'https://api.nasa.gov/'
-  api = getAPIkey(keyname,keyweb,force=False)
-  keyvalue = api.find()
-  api.set()
-  api.make_icons('images')
-  print(keyname,keyvalue)
+   help = False
+   try:
+      opts, args = getopt.getopt(argv,"i:vfhn:w:",["icondir=","name=","web="])
+   except getopt.GetoptError:
+      helpstr = f"{sys.argv[0]} -ifvh -n {keyname} -w {keyweb}"
+      print(helpstr)
+      sys.exit(2)
+   for opt, arg in opts:
+      if opt in ("-i","--icondir"):
+         make_icons=True
+         icondir=arg
+      if opt in ("-v", "--verbose"):
+         verbose = True
+      if opt == '-f':
+         force = True
+      if opt == '-h':
+         helpstr = f"{sys.argv[0]} -ifvh -n {keyname} -w {keyweb}"
+         print(helpstr)
+         sys.exit()
+      elif opt in ("-n", "--name"):
+         keyname = arg
+      elif opt in ("-w", "--web"):
+         keyweb = arg
+   if verbose:
+      print(f'keyname : {keyname}')
+      print(f'keyweb : {keyweb}')
+
+   api = getAPIkey(keyname,keyweb,force=force,verbose=verbose)
+   keyvalue = api.find()
+   api.set()
+   if make_icons:
+      api.make_icons(icondir)
+
+   if verbose:
+     print(f'keyvalue: {keyvalue}')
 
 if __name__ == "__main__":
-  api_main()
+  main(sys.argv[1:])
 
