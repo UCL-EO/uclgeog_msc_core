@@ -1,11 +1,5 @@
 name: upload conda
-on: 
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Manual trigger'
-        required: true
-        default: 'Update Docker'
+on: [workflow_dispatch]
 
 jobs:
   build:
