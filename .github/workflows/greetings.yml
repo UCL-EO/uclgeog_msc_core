@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-    name: echo 1      
+    name: echo1      
     - run:
         echo "${{ github.event.inputs.name }}"
         
-    name: echo 2   
+    name: echo2   
     - run:
         echo "${{ github.event.inputs.name }}"
         
