@@ -16,5 +16,6 @@ jobs:
     steps:
       
     - name: 'noname'
+      if: github.event == 'pull_request'
       run: echo ${{github.event}}
 
