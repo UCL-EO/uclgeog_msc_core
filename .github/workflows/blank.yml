@@ -16,6 +16,10 @@ jobs:
     steps:
       
     - name: 'noname'
-      if: github.event == 'pull_request'
+      if: github.event != 'pull_request'
       run: echo ${{github.event}}
+  
+    - name: 'noname'
+      if: github.event == 'workflow_dispatch'
+      run: echo ${{github.event.inputs.name}}
 
