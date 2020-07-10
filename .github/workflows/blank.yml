@@ -16,4 +16,4 @@ jobs:
 # by default
     - run: |
         echo "${{ github.event.inputs.name }}"
-        echo "${{ github.event }}"
+        echo github.event
