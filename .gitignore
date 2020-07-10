@@ -2,6 +2,7 @@
 *.d
 *.swp
 *.pyc
+.idea
 tmp
 data/*hdf
 *eggs
