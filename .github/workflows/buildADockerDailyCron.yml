@@ -1,19 +1,13 @@
-name: upload-on-manual-trigger
+name: upload-on-daily-cron
 
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Manual trigger'
-        required: true
-        default: 'Generate Docker'
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo "${{ github.event.inputs.name }}"
 
     - name: checkout files in repo
       uses: actions/checkout@master
