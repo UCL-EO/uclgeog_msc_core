@@ -1,0 +1,19 @@
+name: test-flow
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Manual trigger'
+        required: true
+        default: 'Test'
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+# github.event.inputs.name is 'Test'
+# by default
+    - run: |
+        echo "${{ github.event.inputs.name }}"
+        echo "${{ github.event }}"
