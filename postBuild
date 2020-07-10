@@ -16,4 +16,4 @@ jupyter labextension install jupyter-leaflet
 
 # Trust notebooks in repo
 jupyter trust *.ipynb
-
+jupyter trust notebooks/*.ipynb
