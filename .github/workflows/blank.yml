@@ -22,9 +22,9 @@ jobs:
       
     - name: 'noname_push'
       if: ${{github.event.inputs.name}} == 'push'
-      run: "Hello ${{ github.event.inputs.name }}"
+      run: echo "Hello ${{ github.event.inputs.name }}"
   
     - name: 'noname_manual'
       if: github.event.inputs.name == 'workflow_dispatch'
-      run: "Hello ${{ github.event.inputs.name }}"
+      run: echo "Hello ${{ github.event.inputs.name }}"
 
