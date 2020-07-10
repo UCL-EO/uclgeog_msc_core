@@ -19,7 +19,7 @@ jobs:
     steps:
       
     - name: 'noname_push'
-      if: github.event == 'push'
+      if: github.event == push
       run: echo github.workflow
   
     - name: 'noname_manual'
