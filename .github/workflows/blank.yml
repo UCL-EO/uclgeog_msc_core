@@ -18,4 +18,6 @@ jobs:
     - name: 'noname'
     if: github.event == 'workflow_dispatch'
     run: pwd
+    if: github.event != 'workflow_dispatch'
+    run: ls
 
