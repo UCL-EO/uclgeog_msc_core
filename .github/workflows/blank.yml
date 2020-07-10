@@ -18,13 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 'trier'
-      run: echo github.event.inputs.name
+      run: echo ${{github.event.inputs.name}}
       
     - name: 'noname_push'
-      if: github.event.inputs.name == 'push'
+      if: ${{github.event.inputs.name}} == 'push'
       run: echo 'blaa blaa'
   
     - name: 'noname_manual'
-      if: github.event.inputs.name == 'workflow_dispatch'
+      if: ${{github.event.inputs.name}} == 'workflow_dispatch'
       run: echo 'workflow -- dispatch'
 
