@@ -9,15 +9,53 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
-try:
-  with open('VERSION','r') as f:
-    # read the last line
-    lines = [j for j in [i.strip() for i in f.readlines()] if (len(j.split('.')) and j[0] != '#')]
-  VERSION = lines[-1]
-except:
-  VERSION = 1.0.11 
+URL='https://github.com/profLewis/uclgeog_msc_core'
+# store version and name in meta.yaml
+VERSION = '1.0.11'
+META = 'meta.yaml' 
+NAME = 'uclgeog_msc'
+txt = ''
 
-print(VERSION)
+# get version from META
+'''
+package:
+  name:    uclgeog_msc
+  version: 1.0.11
+
+other:
+
+'''
+try:
+  with open(META,'r') as f:
+    # read the last line
+    lines = [i.strip() for i in f.readlines()] 
+
+  # keep this low level for robustness
+  package = [i == 'package:' for i in lines]
+  end_package = [i == '' for i in lines]
+  version = ['version:' in i for i in lines]
+  version_no = [''.join(i.split('version:')[1:]).strip() for i in lines]
+  name =  [''.join(i.split('name:')[1:]).strip() for i in lines]
+  info = list(zip(package,version,end_package,version_no,name))
+  for i,t in enumerate(info):
+    package,version,end_package,version_no,name = t
+    # package, so start parsing following lines
+    if package:
+      for j in range(i,len(info)):
+        package,version,end_package,version_no,name = info[j]
+        if version:
+          VERSION = version_no
+          txt += f'version {VERSION}'
+        if len(name):
+          NAME = name
+          txt += f'name {NAME}'
+        if end_package:
+          break
+      txt += 'from {META}'
+except:
+  print("store version in meta.yaml file or edit here")
+
+print(f'version {VERSION} name {NAME}')
 
 here = path.abspath(path.dirname(__file__))
 
@@ -26,18 +64,18 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = ''
 
 setup(
-    name='uclgeog_msc',
+    name=NAME,
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
     version=VERSION,
 
-    description='Scientific Computing',
+    description='UCL MSc notes',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/profLewis/uclgeog_msc_core',
+    url=URL,
 
     # Author details
     author='Prof. P. Lewis',
