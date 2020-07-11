@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Procuring datasets for uclgeog_msc
+"""Procuring datasets for uclcodebase
 The functions in this file deal with obtaining datasets for the Geog0111 course
 at UCL Geography. The datasets are available over the internet, and are also
 stored locally in the server. In case you're local to UCL Geography, symbolic
@@ -18,7 +18,7 @@ so if you want to provide data in folders, provide a dataset for each of the fol
 import urllib.request
 from pathlib import Path
 from socket import getfqdn
-from uclgeog_msc.get_modis_files import get_modis_files
+from uclcodebase.get_modis_files import get_modis_files
 from bs4 import BeautifulSoup
 import requests
 __author__ = "J Gomez-Dans"
@@ -27,9 +27,9 @@ __license__ = "GPLv3"
 __email__ = "j.gomez-dans@ucl.ac.uk"
  
 def procure_dataset(dataset_name, destination_folder="data",verbose=False,
-                    locations=["/data/selene/ucfajlg/uclgeog_msc_data/",\
-                               "/data/selene/ucfajlg/uclgeog_msc_data/lai_data/",\
-                               "/archive/rsu_raid_0/plewis/public_html/uclgeog_msc_data"][::-1],\
+                    locations=["/data/selene/ucfajlg/uclcodebase_data/",\
+                               "/data/selene/ucfajlg/uclcodebase_data/lai_data/",\
+                               "/archive/rsu_raid_0/plewis/public_html/uclcodebase_data"][::-1],\
                     modis_urls=['https://e4ftl01.cr.usgs.gov/MOTA',\
                                 'https://e4ftl01.cr.usgs.gov/MOLT',\
                                 'https://e4ftl01.cr.usgs.gov/MOLA',\
@@ -38,9 +38,9 @@ def procure_dataset(dataset_name, destination_folder="data",verbose=False,
                                 'https://n5eil01u.ecs.nsidc.org/MOST/',\
                                 'https://n5eil01u.ecs.nsidc.org/MOSA/',\
                                 'https://n5eil01u.ecs.nsidc.org/VIIRS/'],\
-                    urls=["http://www2.geog.ucl.ac.uk/~ucfajlg/uclgeog_msc_data/",\
-                          "http://www2.geog.ucl.ac.uk/~plewis/uclgeog_msc_data/",\
-                          "http://www2.geog.ucl.ac.uk/~plewis/uclgeog_msc_data/lai_files/"][::-1]):
+                    urls=["http://www2.geog.ucl.ac.uk/~ucfajlg/uclcodebase_data/",\
+                          "http://www2.geog.ucl.ac.uk/~plewis/uclcodebase_data/",\
+                          "http://www2.geog.ucl.ac.uk/~plewis/uclcodebase_data/lai_files/"][::-1]):
 
     """Procure a Geog0111 dataset. This function will look for the dataset called
     `dataset_name`, and either provide symbolic links or download the relevant

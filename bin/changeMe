@@ -2,7 +2,7 @@
 # change all references from in to out
 # doesnt change directory names at present
 
-export old=uclgeog_msc_core
+export old=uclcodebase_core
 export new=`basename "$PWD"`
 
 for i in "$@"
@@ -35,20 +35,22 @@ done
 
 grep $old .???* * */* | grep -v Binary | grep -v build | grep -v egg-info > /tmp/x.$$
 export xdir=/tmp/xdir.$$
+export xfile=/tmp/xdir.$$/xfiles
+
+
 mkdir -p $xdir
 echo $old
 
-x=`cat /tmp/x.$$| awk -F: '{x[$1]=$1} END{for(i in x)print i}'`
+# fixed for gaps in names ...  use : sep
+cat /tmp/x.$$| awk -F: -v q=\" '{x[$1]=$1} END{for(i in x)printf("%s\n",i)}' > /tmp/xdir2.$$
 
-mv $old $new
+echo "--------"
+echo "editing:"
+cat /tmp/xdir2.$$
+echo "--------"
 
-for f in $x; do
-  in=`basename $f`
-  out=$f
-  echo '**' $in ':->' $out
-  cp $f $xdir
-  sed < $xdir/$in 's/'${old}'/'${new}'/g' > $out
-done
-rm -rf /tmp/x.$$ $xdir
+mv "$old" "$new"
 
+awk < /tmp/xdir2.$$ -v old="$old" -v new="$new" -v xdir=$xfile -v q=\" '(NF>0){file=$0;ofile=xdir;cmd="sed < "q file q" > " q ofile q;cmd = cmd " s/"old"/"new"/g";system(cmd);cmd="mv " q ofile q " " q file q;system(cmd)}'
 
+rm -rf $xfile /tmp/x.$$ $xdir /tmp/xdir2.$$

@@ -5,7 +5,7 @@ for given tiles into destination_folder
 
 '''
 
-from uclgeog_msc.get_modis_files import get_modis_files
+from uclcodebase.get_modis_files import get_modis_files
 from datetime import datetime
 
 years = [2017,2016]

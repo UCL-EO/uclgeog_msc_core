@@ -1,29 +1,30 @@
 #!/bin/bash
 
 rm -rf *egg*
-rm -rf dist/uclgeog_msc*
+rm -rf dist/uclcodebase*
 here=`pwd`
 
 echo "--------------------"
 echo "# conda config"
 echo "--------------------"
 conda config --set anaconda_upload yes
-cd ..
 
 echo "--------------------"
 echo "# conda build"
 echo "--------------------"
-conda-build uclgeog_msc_core
+
+cd ..
+conda-build uclcodebase_core
 
 echo "--------------------"
-echo "# conda install -c proflewis uclgeog_msc"
+echo "# conda install -c proflewis uclcodebase"
 echo "--------------------"
-conda install -c proflewis uclgeog_msc --yes
+conda install -c proflewis uclcodebase --yes
 
 echo "--------------------"
-echo "# conda upgrade -c proflewis uclgeog_msc"
+echo "# conda upgrade -c proflewis uclcodebase"
 echo "--------------------"
-conda upgrade -c proflewis uclgeog_msc --yes
+conda upgrade -c proflewis uclcodebase --yes
 
 echo "--------------------"
 echo "# conda install -c conda-forge jupyter_contrib_nbextensions"
