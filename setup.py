@@ -9,6 +9,16 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
+try:
+  with open('VERSION','r') as f:
+    # read the last line
+    lines = [j for j in [i.strip() for i in f.readlines()] if (len(j.split('.')) and j[0] != '#')]
+  VERSION = lines[-1]
+except:
+  VERSION = 1.0.11 
+
+print(VERSION)
+
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the relevant file
@@ -21,7 +31,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.0.10',
+    version=VERSION,
 
     description='Scientific Computing',
     long_description=long_description,
