@@ -59,6 +59,7 @@ dependencies:
   - sphinx
   - ipykernel
   - importlib_metadata
+  - nbgrader
   - pip
   - pip:
     - jupyter_http_over_ws

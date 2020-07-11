@@ -22,6 +22,8 @@ case $i in
 esac
 done
 
+# need to delete binder
+rm -f binder/*
 docker login
 
 # get the id for the git clone command
