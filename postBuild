@@ -2,6 +2,9 @@
 conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes 
 #conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes 
 
+# for google colab 
+jupyter serverextension enable --py jupyter_http_over_ws
+
 jupyter contrib nbextension install --user
 jupyter nbextension enable --py widgetsnbextension
 jupyter nbextension enable rubberband/main
