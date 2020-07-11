@@ -1,6 +1,6 @@
 package:
   name:    uclgeog_msc
-  version: 1.0.11
+  version: 1.0.12
 
 source:
   git_rev: 1.0.0
