@@ -4,5 +4,6 @@
       "jupyter_http_over_ws": true,
       "jupyter_nbextensions_configurator": true
     }
+    "notebook_dir": "notebooks"
   }
 }
