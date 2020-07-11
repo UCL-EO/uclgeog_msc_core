@@ -45,6 +45,13 @@ This should download the docker image (if it isnt already downloaded) and print 
 
 Open a browser with that address, then navigate to the notebook you want to use.
 
+Conda package
+-----------------
+
+To install the repo conda package:
+
+	conda install -c proflewis uclgeog_msc
+
 ### Course Convenor
 
 [Prof P. Lewis](http://www.geog.ucl.ac.uk/~plewis)
