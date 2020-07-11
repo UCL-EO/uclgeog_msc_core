@@ -2,7 +2,11 @@
   "NotebookApp": {
     "nbserver_extensions": {
       "jupyter_http_over_ws": true,
-      "jupyter_nbextensions_configurator": true
+      "jupyter_nbextensions_configurator": true,
+      "nbgrader.server_extensions.formgrader": true,
+      "nbgrader.server_extensions.validate_assignment": true,
+      "nbgrader.server_extensions.assignment_list": true,
+      "nbgrader.server_extensions.course_list": true
     },
     "notebook_dir": "notebooks"
   }

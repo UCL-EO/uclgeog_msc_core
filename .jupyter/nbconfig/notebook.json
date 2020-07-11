@@ -28,7 +28,9 @@
     "codefolding/main": true,
     "help_panel/help_panel": true,
     "datestamper/main": false,
-    "highlighter/highlighter": true
+    "highlighter/highlighter": true,
+    "create_assignment/main": true,
+    "validate_assignment/main": true
   },
   "highlight_selected_word": {
     "outlines_only": false
