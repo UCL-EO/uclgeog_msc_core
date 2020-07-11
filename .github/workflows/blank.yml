@@ -15,7 +15,12 @@ jobs:
     steps:
     - run: |
         echo "${{ github.event.inputs.name }}"
-        
+
+    - name: checkout files in repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
     - name: 'noname_push'
       if: github.event.inputs.name != 'Update Docker'
       run: echo "Hello ${{ github.event.inputs.name }}"
