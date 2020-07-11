@@ -12,11 +12,11 @@ from pathlib import Path
 import os
 import requests
 import shutil 
-from uclcodebase.get_modis_files import get_modis_files
+from uclgeog_msc.get_modis_files import get_modis_files
 
 
 
-def get_world( borders_url = "https://raw.githubusercontent.com/UCL-EO/uclcodebase_core/master/data",\
+def get_world( borders_url = "https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/data",\
                file="TM_WORLD_BORDERS-0.3.zip",\
                data='data',force=False):
   '''

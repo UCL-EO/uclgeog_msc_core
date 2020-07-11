@@ -13,7 +13,7 @@ for h in [17, 18]:
 
 
 # get the MODIS LAI dataset for 2016/2017 for W. Europe
-from uclcodebase.geog_data import procure_dataset
+from uclgeog_msc.geog_data import procure_dataset
 from pathlib import Path
 import sys
 year = 2017
@@ -41,8 +41,8 @@ if ofile.exists():
 # try to download it from server
 done = procure_dataset(fname,verbose=True)
 
-from uclcodebase.get_modis_files import get_modis_files
-from uclcodebase.process_timeseries import mosaic_and_clip
+from uclgeog_msc.get_modis_files import get_modis_files
+from uclgeog_msc.process_timeseries import mosaic_and_clip
 
 '''
 Get the MODIS LC files from the server

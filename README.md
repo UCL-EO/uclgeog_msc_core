@@ -1,20 +1,20 @@
-# Welcome to uclcodebase_core: Scientific Computing 
+# Welcome to uclgeog_msc_core: Scientific Computing 
 UCL Geography: Level 7 course, Scientific Computing
 
 
 
 ![](images/ucl_logo.png)
 
-[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclcodebase/badges/platforms.svg)](https://anaconda.org/proflewis/uclcodebase)
-[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclcodebase/badges/latest_release_date.svg)](https://anaconda.org/proflewis/uclcodebase)
-[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclcodebase/badges/version.svg)](https://anaconda.org/proflewis/uclcodebase)
-[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclcodebase/badges/downloads.svg)](https://anaconda.org/proflewis/uclcodebase)
-[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclcodebase/badges/installer/conda.svg)](https://conda.anaconda.org/proflewis)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/platforms.svg)](https://anaconda.org/proflewis/uclgeog_msc)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/latest_release_date.svg)](https://anaconda.org/proflewis/uclgeog_msc)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/version.svg)](https://anaconda.org/proflewis/uclgeog_msc)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/downloads.svg)](https://anaconda.org/proflewis/uclgeog_msc)
+[![Anaconda-Server Badge](https://anaconda.org/proflewis/uclgeog_msc/badges/installer/conda.svg)](https://conda.anaconda.org/proflewis)
 
-![test](https://github.com/UCL-EO/uclcodebase_core/workflows/test/badge.svg)
+![test](https://github.com/UCL-EO/uclgeog_msc_core/workflows/test/badge.svg)
 
-[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclcodebase.svg)](https://hub.docker.com/proflewis/uclcodebase) [![docker stars](https://img.shields.io/docker/stars/proflewis/uclcodebase.svg)](https://hub.docker.com/r/proflewis/uclcodebase) 
-[![metadata](https://images.microbadger.com/badges/image/proflewis/uclcodebase.svg)](https://microbadger.com/images/proflewis/uclcodebase "proflewis/uclcodebase image metadata")
+[![docker pulls](https://img.shields.io/docker/pulls/proflewis/uclgeog_msc.svg)](https://hub.docker.com/proflewis/uclgeog_msc) [![docker stars](https://img.shields.io/docker/stars/proflewis/uclgeog_msc.svg)](https://hub.docker.com/r/proflewis/uclgeog_msc) 
+[![metadata](https://images.microbadger.com/badges/image/proflewis/uclgeog_msc.svg)](https://microbadger.com/images/proflewis/uclgeog_msc "proflewis/uclgeog_msc image metadata")
 
 This repository contains the core settings for software  several UCL MSc Geography courses.
 
@@ -37,7 +37,7 @@ Pull docker image and test
 
 Next, pull the docker image and run a test notebook. In a terminal, type:
 
-	docker run -p 8888:8888 proflewis/uclcodebase 
+	docker run -p 8888:8888 proflewis/uclgeog_msc 
 
 This should download the docker image (if it isnt already downloaded) and print some text such as:
 
@@ -50,7 +50,7 @@ Conda package
 
 To install the repo conda package:
 
-	conda install -c proflewis uclcodebase
+	conda install -c proflewis uclgeog_msc
 
 ### Course Convenor
 
@@ -67,7 +67,7 @@ To install the repo conda package:
 Other information
 -----------------
 
-For reference, the docker file is stored on [docker hub](https://hub.docker.com/r/proflewis/uclcodebase).
+For reference, the docker file is stored on [docker hub](https://hub.docker.com/r/proflewis/uclgeog_msc).
 
 The script [bin/dockerMe](bin/dockerMe) contains all of the docker commands you might need to create such a docker image yourself.
 

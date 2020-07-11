@@ -1,11 +1,11 @@
 #!/bin/bash
 
 rm -rf *egg*
-rm -rf dist/uclcodebase*
+rm -rf dist/uclgeog_msc*
 
 python setup.py install
 python setup.py sdist
-anaconda upload --force dist/uclcodebase*.tar.gz
+anaconda upload --force dist/uclgeog_msc*.tar.gz
 
 # update local
 python setup.py install && bash postBuild

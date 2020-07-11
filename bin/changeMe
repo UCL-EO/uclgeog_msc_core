@@ -2,7 +2,7 @@
 # change all references from in to out
 # doesnt change directory names at present
 
-export old=uclcodebase_core
+export old=uclgeog_msc_core
 export new=`basename "$PWD"`
 
 for i in "$@"
@@ -52,5 +52,7 @@ echo "--------"
 mv "$old" "$new"
 
 awk < /tmp/xdir2.$$ -v old="$old" -v new="$new" -v xdir=$xfile -v q=\" '(NF>0){file=$0;ofile=xdir;cmd="sed < "q file q" > " q ofile q;cmd = cmd " s/"old"/"new"/g";system(cmd);cmd="mv " q ofile q " " q file q;system(cmd)}'
+
+chmod +x bin/*
 
 rm -rf $xfile /tmp/x.$$ $xdir /tmp/xdir2.$$

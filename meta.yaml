@@ -1,10 +1,10 @@
 package:
-  name:    uclcodebase
+  name:    uclgeog_msc
   version: 1.0.0
 
 source:
   git_rev: 1.0.0
-  git_url: https://github.com/UCL-EO/uclcodebase_core
+  git_url: https://github.com/UCL-EO/uclgeog_msc_core
 
 build:
   noarch: python
@@ -22,7 +22,7 @@ requirements:
 
 test:
   imports:
-    - uclcodebase
+    - uclgeog_msc
 
 about:
-  home: https://github.com/UCL-EO/uclcodebase_core
+  home: https://github.com/UCL-EO/uclgeog_msc_core

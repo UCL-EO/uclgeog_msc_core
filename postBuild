@@ -1,4 +1,4 @@
-#conda upgrade -c proflewis uclcodebase --yes 
+#conda upgrade -c proflewis uclgeog_msc --yes 
 conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes 
 #conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes 
 
@@ -11,6 +11,11 @@ jupyter nbextension enable rubberband/main
 jupyter nbextension enable exercise2/main
 jupyter nbextension enable collapsible_headings/main
 jupyter nbextension enable --py --sys-prefix widgetsnbextension
+
+
+jupyter nbextension install --py nbgrader --overwrite
+jupyter nbextension enable --py nbgrader
+jupyter serverextension enable --py nbgrader
 
 # Add jupyterlab extensions here (some might need installing via conda/pip)
 
