@@ -64,7 +64,7 @@ class getAPIkey():
                  backup='python3',
                  keyfile='.jupyter/.keys.dat',
                  source='source',
-                 database='uclgeog_msc_core'):
+                 database='uclgeog_core'):
         self.keyfile = keyfile
         self.source = source
         self.keyweb = keyweb
@@ -200,7 +200,7 @@ class getAPIkey():
         ucllogo = Path(resource_dir).joinpath('ucl_logo.png')
         logo3232 = Path(resource_dir).joinpath('logo-32x32.png')
         logo6464 = Path(resource_dir).joinpath('logo-64x64.png')
-        url = 'https://raw.githubusercontent.com/UCL-EO/uclgeog_msc_core/master/images/ucl_logo.png'
+        url = 'https://raw.githubusercontent.com/UCL-EO/uclgeog_core/master/images/ucl_logo.png'
         try:
             r = requests.get(url, allow_redirects=True)
             open(ucllogo, 'wb').write(r.content)
@@ -340,7 +340,7 @@ class getAPIkey():
                 if verbose:
                   print(f'updating {str(kernel)} with {string}') 
                 with(open(kernel,'a+')) as f:
-                  web='https://github.com/UCL-EO/uclgeog_msc_core/blob/master/uclgeog_msc/api.py'
+                  web='https://github.com/UCL-EO/uclgeog_core/blob/master/uclgeog/api.py'
                   f.write(f'# API keys\n')
                   f.write(f'# see {web}\n')
                   f.write(f'trap "" ERR\n') 

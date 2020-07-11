@@ -1,13 +1,19 @@
 #!/bin/bash
 
 rm -rf *egg*
-rm -rf dist/uclgeog_msc*
+rm -rf dist/*
 here=`pwd`
+
+python setup.py install
+
+codebase=`grep name meta.yaml|awk -F: '{print $2}'`
+echo "--------------------"
+echo "# conda codebase: $codebase"
+echo "--------------------"
 
 
 conda env update --file environment.yml
-conda activate msc_core
-
+conda activate $codebase
 echo "--------------------"
 echo "# conda config"
 echo "--------------------"
@@ -18,17 +24,17 @@ echo "# conda build"
 echo "--------------------"
 
 cd ..
-conda-build uclgeog_msc_core
+conda-build $codebase
 
 echo "--------------------"
-echo "# conda install -c proflewis uclgeog_msc"
+echo "# conda install -c proflewis $codebase"
 echo "--------------------"
-conda install -c proflewis uclgeog_msc --yes
+conda install -c proflewis $codebase --yes
 
 echo "--------------------"
-echo "# conda upgrade -c proflewis uclgeog_msc"
+echo "# conda upgrade -c proflewis $codebase"
 echo "--------------------"
-conda upgrade -c proflewis uclgeog_msc --yes
+conda upgrade -c proflewis $codebase --yes
 
 echo "--------------------"
 echo "# conda install -c conda-forge jupyter_contrib_nbextensions"

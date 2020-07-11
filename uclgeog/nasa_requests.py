@@ -1,6 +1,6 @@
 import requests
 from pathlib import Path
-from uclgeog_msc.cylog import cylog
+from uclgeog.cylog import cylog
 
 __author__ = "P Lewis"
 __copyright__ = "Copyright 2018 P Lewis"

@@ -2,7 +2,7 @@
 # change all references from in to out
 # doesnt change directory names at present
 
-export old=uclgeog_msc_core
+export old=uclgeog_core
 export new=`basename "$PWD"`
 
 for i in "$@"

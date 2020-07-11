@@ -1,6 +1,6 @@
 pip install nbgrader
 
-#conda upgrade -c proflewis uclgeog_msc --yes 
+#conda upgrade -c proflewis uclgeog --yes 
 conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes 
 #conda upgrade -c conda-forge jupyter_contrib_nbextensions --yes 
 
