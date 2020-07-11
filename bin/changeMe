@@ -2,12 +2,36 @@
 # change all references from in to out
 # doesnt change directory names at present
 
-# assume we run it from old name
-export old=geog0111
-#`basename "$PWD"`
-export new=`basename "$PWD"`
 export old=uclgeog_msc_core
-export new=uclgeog_msc
+export new=`basename "$PWD"`
+
+for i in "$@"
+do
+case $i in
+  -o|--old)
+    export old="$2"
+    shift # past argument=value
+    shift # past value
+    ;;
+  -n|--new)
+    export new="$2"
+    shift # past argument=value
+    shift # past value
+    ;;
+  --help) 
+    echo "${0}: scan local files and replace old field with new"
+    echo "${0} [-o|--old] [-n|--new]"
+    echo "-o|--old  : name to be replaced in files"
+    echo "-n|--new  : name to replace into files"
+    exit 0
+    shift # past argument=value
+    ;;
+    *)
+          # unknown option 
+    ;; 
+esac
+done
+
 
 grep $old .???* * */* | grep -v Binary | grep -v build | grep -v egg-info > /tmp/x.$$
 export xdir=/tmp/xdir.$$
