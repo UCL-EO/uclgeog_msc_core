@@ -6,21 +6,21 @@ on:
       name:
         description: 'name'
         required: true
-        default: 'workflow_dispatch'
+        default: 'Update Docker'
   push:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: 'trier'
-      run: echo "Hello ${{ github.event.inputs.name }}"
-      
+    - run: |
+        echo "${{ github.event.inputs.name }}"
+        
     - name: 'noname_push'
-      if: github.event.inputs.name != 'workflow_dispatch'
+      if: github.event.inputs.name != 'Update Docker'
       run: echo "Hello ${{ github.event.inputs.name }}"
   
     - name: 'noname_manual'
-      if: github.event.inputs.name == 'workflow_dispatch'
+      if: github.event.inputs.name == 'Update Docker'
       run: echo "Hello ${{ github.event.inputs.name }}"
 
